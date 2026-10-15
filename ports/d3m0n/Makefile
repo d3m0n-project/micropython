@@ -41,7 +41,7 @@ $(BUILD)/$(OUT): $(OBJ)
 export: all
 	mv $(BUILD)/$(OUT) ../../../bin/$(OUT)
 
-re_export: clean all
+re_export: clean export
 
 # Include remaining core make rules.
 include $(TOP)/py/mkrules.mk
