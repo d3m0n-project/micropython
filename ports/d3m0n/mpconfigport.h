@@ -10,10 +10,8 @@
 // will still be able to execute pre-compiled scripts, compiled with mpy-cross.
 #define MICROPY_ENABLE_COMPILER     (1)
 
-#define MICROPY_QSTR_EXTRA_POOL           mp_qstr_frozen_const_pool
 #define MICROPY_ENABLE_GC                 (1)
 #define MICROPY_HELPER_REPL               (1)
-#define MICROPY_MODULE_FROZEN_MPY         (1)
 #define MICROPY_ENABLE_EXTERNAL_IMPORT    (1)
 
 #define MICROPY_ALLOC_PATH_MAX            (256)
@@ -37,6 +35,7 @@ typedef long mp_off_t;
 
 #define MICROPY_HW_BOARD_NAME "minimal"
 #define MICROPY_HW_MCU_NAME "unknown-cpu"
+#define MICROPY_MPHALPORT_H "mphalport.h"
 
 #if defined(__linux__) || defined(__APPLE__)
 #define MICROPY_MIN_USE_STDOUT (1)
