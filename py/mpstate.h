@@ -26,7 +26,7 @@
 #ifndef MICROPY_INCLUDED_PY_MPSTATE_H
 #define MICROPY_INCLUDED_PY_MPSTATE_H
 
-#include <stdint.h>
+#include "types.h"
 
 #include "py/mpconfig.h"
 #include "py/mpthread.h"

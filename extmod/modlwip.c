@@ -26,8 +26,8 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <stdio.h>
+
+#include "stdio.hpp"
 
 #include "py/objlist.h"
 #include "py/runtime.h"

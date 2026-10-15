@@ -25,10 +25,10 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <stdarg.h>
-#include <assert.h>
-#include <stdio.h>
+
+// #include <stdarg.h>
+// #include <assert.h>
+#include "stdio.hpp"
 
 #include "py/objlist.h"
 #include "py/objstr.h"

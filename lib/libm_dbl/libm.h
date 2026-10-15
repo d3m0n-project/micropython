@@ -12,8 +12,8 @@
  * ====================================================
  */
 
-#include <stdint.h>
-#include <math.h>
+#include "types.h"
+// #include <math.h>
 
 // These lines verify that FLT_EVAL_METHOD==0, MicroPython's libm requires this.
 // If compilation fails here then check the host compiler's FLT_EVAL_METHOD.

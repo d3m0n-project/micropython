@@ -26,10 +26,10 @@
 
 // This code glues the code emitters to the runtime.
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+#include "types.h"
+#include "stdio.hpp"
+
+// #include <assert.h>
 
 #include "py/emitglue.h"
 #include "py/mphal.h"

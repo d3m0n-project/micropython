@@ -31,7 +31,7 @@ ZIP = zip
 
 AS = $(CROSS_COMPILE)as
 CC = $(CROSS_COMPILE)gcc
-CPP = $(CC) -E
+CPP = d3c -E
 CXX = $(CROSS_COMPILE)g++
 GDB = $(CROSS_COMPILE)gdb
 LD = $(CROSS_COMPILE)ld

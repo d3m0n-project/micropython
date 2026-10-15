@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
+
 #include "py/runtime.h"
 
 #if MICROPY_PY_MACHINE_SIGNAL

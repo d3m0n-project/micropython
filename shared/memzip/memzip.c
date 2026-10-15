@@ -1,6 +1,6 @@
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
+#include "types.h"
+#include "stdlib.h"
+
 #include "py/mpconfig.h"
 #include "py/misc.h"
 #include "memzip.h"

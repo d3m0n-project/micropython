@@ -20,7 +20,7 @@
  * ====================================================
  */
 
-#include <math.h>
+// #include <math.h>
 
 /* Default to XOPEN_MODE.  */
 #define _XOPEN_MODE

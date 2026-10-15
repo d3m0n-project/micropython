@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <unistd.h> // for ssize_t
+// #include <unistd.h> // for ssize_t
 
 #include "py/runtime.h"
 

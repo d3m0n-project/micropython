@@ -25,9 +25,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include <string.h>
-#include <assert.h>
+// #include <stdbool.h>
+
+// #include <assert.h>
 
 #include "py/bc0.h"
 #include "py/bc.h"

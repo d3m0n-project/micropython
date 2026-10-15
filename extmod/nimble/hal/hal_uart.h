@@ -27,7 +27,7 @@
 #ifndef MICROPY_INCLUDED_EXTMOD_NIMBLE_HAL_HAL_UART_H
 #define MICROPY_INCLUDED_EXTMOD_NIMBLE_HAL_HAL_UART_H
 
-#include <stdint.h>
+#include "types.h"
 
 #define SYSINIT_PANIC_ASSERT_MSG(cond, msg)
 

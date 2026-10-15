@@ -35,7 +35,7 @@
 #include "py/qstr.h"
 #include "py/runtime.h"
 #include "extmod/modbluetooth.h"
-#include <string.h>
+
 
 #if MICROPY_PY_BLUETOOTH
 

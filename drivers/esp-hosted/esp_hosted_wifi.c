@@ -31,9 +31,9 @@
 
 #if MICROPY_PY_NETWORK_ESP_HOSTED
 
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
+#include "types.h"
+
+#include "stdio.hpp"
 
 #include "lwip/err.h"
 #include "lwip/dns.h"
@@ -166,32 +166,32 @@ static int32_t esp_hosted_resp_value(CtrlMsg *ctrl_msg) {
     // the following array maps response CtrlMsgs to return values (resp)
     // offsets within each response struct.
     const static size_t ctrl_msg_resp_offset[] = {
-        offsetof(CtrlMsgRespGetMacAddress, resp),
-        offsetof(CtrlMsgRespSetMacAddress, resp),
-        offsetof(CtrlMsgRespGetMode, resp),
-        offsetof(CtrlMsgRespSetMode, resp),
-        offsetof(CtrlMsgRespScanResult, resp),
-        offsetof(CtrlMsgRespGetAPConfig, resp),
-        offsetof(CtrlMsgRespConnectAP, resp),
-        offsetof(CtrlMsgRespGetStatus, resp),
-        offsetof(CtrlMsgRespGetSoftAPConfig, resp),
-        offsetof(CtrlMsgRespSetSoftAPVendorSpecificIE, resp),
-        offsetof(CtrlMsgRespStartSoftAP, resp),
-        offsetof(CtrlMsgRespSoftAPConnectedSTA, resp),
-        offsetof(CtrlMsgRespGetStatus, resp),
-        offsetof(CtrlMsgRespSetMode, resp),
-        offsetof(CtrlMsgRespGetMode, resp),
-        offsetof(CtrlMsgRespOTABegin, resp),
-        offsetof(CtrlMsgRespOTAWrite, resp),
-        offsetof(CtrlMsgRespOTAEnd, resp),
-        offsetof(CtrlMsgRespSetWifiMaxTxPower, resp),
-        offsetof(CtrlMsgRespGetWifiCurrTxPower, resp),
-        offsetof(CtrlMsgRespConfigHeartbeat, resp),
-        offsetof(CtrlMsgRespEnableDisable, resp),
-        offsetof(CtrlMsgRespGetFwVersion, resp),
-        offsetof(CtrlMsgRespSetCountryCode, resp),
-        offsetof(CtrlMsgRespGetCountryCode, resp),
-        offsetof(CtrlMsgRespCustomRpcUnserialisedMsg, resp),
+        OFFSETOF(CtrlMsgRespGetMacAddress, resp),
+        OFFSETOF(CtrlMsgRespSetMacAddress, resp),
+        OFFSETOF(CtrlMsgRespGetMode, resp),
+        OFFSETOF(CtrlMsgRespSetMode, resp),
+        OFFSETOF(CtrlMsgRespScanResult, resp),
+        OFFSETOF(CtrlMsgRespGetAPConfig, resp),
+        OFFSETOF(CtrlMsgRespConnectAP, resp),
+        OFFSETOF(CtrlMsgRespGetStatus, resp),
+        OFFSETOF(CtrlMsgRespGetSoftAPConfig, resp),
+        OFFSETOF(CtrlMsgRespSetSoftAPVendorSpecificIE, resp),
+        OFFSETOF(CtrlMsgRespStartSoftAP, resp),
+        OFFSETOF(CtrlMsgRespSoftAPConnectedSTA, resp),
+        OFFSETOF(CtrlMsgRespGetStatus, resp),
+        OFFSETOF(CtrlMsgRespSetMode, resp),
+        OFFSETOF(CtrlMsgRespGetMode, resp),
+        OFFSETOF(CtrlMsgRespOTABegin, resp),
+        OFFSETOF(CtrlMsgRespOTAWrite, resp),
+        OFFSETOF(CtrlMsgRespOTAEnd, resp),
+        OFFSETOF(CtrlMsgRespSetWifiMaxTxPower, resp),
+        OFFSETOF(CtrlMsgRespGetWifiCurrTxPower, resp),
+        OFFSETOF(CtrlMsgRespConfigHeartbeat, resp),
+        OFFSETOF(CtrlMsgRespEnableDisable, resp),
+        OFFSETOF(CtrlMsgRespGetFwVersion, resp),
+        OFFSETOF(CtrlMsgRespSetCountryCode, resp),
+        OFFSETOF(CtrlMsgRespGetCountryCode, resp),
+        OFFSETOF(CtrlMsgRespCustomRpcUnserialisedMsg, resp),
     };
 
     int32_t resp = -1;

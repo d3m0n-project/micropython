@@ -26,7 +26,7 @@
 #ifndef MICROPY_INCLUDED_PY_NATIVEGLUE_H
 #define MICROPY_INCLUDED_PY_NATIVEGLUE_H
 
-#include <stdarg.h>
+// #include <stdarg.h>
 #include "py/obj.h"
 #include "py/persistentcode.h"
 #include "py/stream.h"

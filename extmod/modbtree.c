@@ -29,9 +29,9 @@
 
 #if MICROPY_PY_BTREE
 
-#include <stdio.h>
-#include <errno.h> // for declaration of global errno variable
-#include <fcntl.h>
+#include "stdio.hpp"
+// #include <errno.h> // for declaration of global errno variable
+// #include <fcntl.h>
 
 // Undefine queue macros that will be defined in berkeley-db-1.xx headers
 // below, in case they clash with system ones defined in headers above.

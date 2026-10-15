@@ -1,4 +1,4 @@
-#include <math.h>
+// #include <math.h>
 
 static const double _M_LN10 = 2.302585092994046;
 

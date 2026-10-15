@@ -28,7 +28,7 @@ def create_zip(zip_filename, zip_dir):
 def create_c_from_file(c_filename, zip_filename):
     with open(zip_filename, "rb") as zip_file:
         with open(c_filename, "wt") as c_file:
-            print("#include <stdint.h>", file=c_file)
+            print("#include "types.h"", file=c_file)
             print("", file=c_file)
             print("const uint8_t memzip_data[] = {", file=c_file)
             while True:

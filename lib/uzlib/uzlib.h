@@ -38,13 +38,13 @@
 #ifndef UZLIB_H_INCLUDED
 #define UZLIB_H_INCLUDED
 
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
+#include "stdlib.h"
+#include "types.h"
+// #include <stdbool.h>
 
 #include "uzlib_conf.h"
 #if UZLIB_CONF_DEBUG_LOG
-#include <stdio.h>
+#include "stdio.hpp"
 #endif
 
 #ifdef __cplusplus

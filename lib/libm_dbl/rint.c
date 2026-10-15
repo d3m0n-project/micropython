@@ -1,6 +1,6 @@
-#include <float.h>
-#include <math.h>
-#include <stdint.h>
+// #include <float.h>
+// #include <math.h>
+#include "types.h"
 
 #if FLT_EVAL_METHOD==0 || FLT_EVAL_METHOD==1 || FLT_EVAL_METHOD==16
 #define EPS DBL_EPSILON

@@ -26,7 +26,7 @@
 #ifndef MICROPY_INCLUDED_PY_OBJ_H
 #define MICROPY_INCLUDED_PY_OBJ_H
 
-#include <assert.h>
+// #include <assert.h>
 
 #include "py/mpconfig.h"
 #include "py/misc.h"
@@ -184,7 +184,7 @@ static inline bool mp_obj_is_small_int(mp_const_obj_t o) {
 #define MP_OBJ_NEW_SMALL_INT(small_int) ((mp_obj_t)((((mp_uint_t)(small_int)) << 1) | 1))
 
 #if MICROPY_PY_BUILTINS_FLOAT
-#include <math.h>
+// #include <math.h>
 // note: MP_OBJ_NEW_CONST_FLOAT should be a MP_ROM_PTR but that macro isn't available yet
 #define MP_OBJ_NEW_CONST_FLOAT(f) ((mp_obj_t)((((((uint64_t)f) & ~3) | 2) + 0x80800000) & 0xffffffff))
 #define mp_const_float_e  MP_OBJ_NEW_CONST_FLOAT(0x402df854)
@@ -267,7 +267,7 @@ static inline bool mp_obj_is_immediate_obj(mp_const_obj_t o) {
 #error MICROPY_OBJ_REPR_D requires MICROPY_FLOAT_IMPL_DOUBLE
 #endif
 
-#include <math.h>
+// #include <math.h>
 #define mp_const_float_e {((mp_obj_t)((uint64_t)0x4005bf0a8b145769 + 0x8004000000000000))}
 #define mp_const_float_pi {((mp_obj_t)((uint64_t)0x400921fb54442d18 + 0x8004000000000000))}
 #define mp_const_float_nan {((mp_obj_t)((uint64_t)0x7ff8000000000000 + 0x8004000000000000))}
@@ -786,7 +786,7 @@ typedef struct _mp_obj_full_type_t {
 #define MP_OBJ_TYPE_GET_SLOT(t, f) (_MP_OBJ_TYPE_SLOT_TYPE_##f(t)->slots[(t)->slot_index_##f - 1])
 #define MP_OBJ_TYPE_GET_SLOT_OR_NULL(t, f) (_MP_OBJ_TYPE_SLOT_TYPE_##f(MP_OBJ_TYPE_HAS_SLOT(t, f) ? MP_OBJ_TYPE_GET_SLOT(t, f) : NULL))
 #define MP_OBJ_TYPE_SET_SLOT(t, f, v, n) ((t)->slot_index_##f = (n) + 1, (t)->slots[(n)] = (void *)v)
-#define MP_OBJ_TYPE_OFFSETOF_SLOT(f) (offsetof(mp_obj_type_t, slot_index_##f))
+#define MP_OBJ_TYPE_OFFSETOF_SLOT(f) (OFFSETOF(mp_obj_type_t, slot_index_##f))
 #define MP_OBJ_TYPE_HAS_SLOT_BY_OFFSET(t, offset) (*(uint8_t *)((char *)(t) + (offset)) != 0)
 
 // Implementation of MP_DEFINE_CONST_OBJ_TYPE for each number of arguments.
@@ -956,13 +956,13 @@ extern const struct _mp_obj_exception_t mp_const_GeneratorExit_obj;
 // Helper versions of m_new_obj when you need to immediately set base.type.
 // Implementing this as a call rather than inline saves 8 bytes per usage.
 #define mp_obj_malloc(struct_type, obj_type) ((struct_type *)mp_obj_malloc_helper(sizeof(struct_type), obj_type))
-#define mp_obj_malloc_var(struct_type, var_field, var_type, var_num, obj_type) ((struct_type *)mp_obj_malloc_helper(offsetof(struct_type, var_field) + sizeof(var_type) * (var_num), obj_type))
+#define mp_obj_malloc_var(struct_type, var_field, var_type, var_num, obj_type) ((struct_type *)mp_obj_malloc_helper(OFFSETOF(struct_type, var_field) + sizeof(var_type) * (var_num), obj_type))
 void *mp_obj_malloc_helper(size_t num_bytes, const mp_obj_type_t *type);
 
 // Object allocation macros for allocating objects that have a finaliser.
 #if MICROPY_ENABLE_FINALISER
 #define mp_obj_malloc_with_finaliser(struct_type, obj_type) ((struct_type *)mp_obj_malloc_with_finaliser_helper(sizeof(struct_type), obj_type))
-#define mp_obj_malloc_var_with_finaliser(struct_type, var_field, var_type, var_num, obj_type) ((struct_type *)mp_obj_malloc_with_finaliser_helper(offsetof(struct_type, var_field) + sizeof(var_type) * (var_num), obj_type))
+#define mp_obj_malloc_var_with_finaliser(struct_type, var_field, var_type, var_num, obj_type) ((struct_type *)mp_obj_malloc_with_finaliser_helper(OFFSETOF(struct_type, var_field) + sizeof(var_type) * (var_num), obj_type))
 void *mp_obj_malloc_with_finaliser_helper(size_t num_bytes, const mp_obj_type_t *type);
 #else
 #define mp_obj_malloc_with_finaliser(struct_type, obj_type) mp_obj_malloc(struct_type, obj_type)

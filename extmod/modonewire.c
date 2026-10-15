@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdint.h>
+#include "stdio.hpp"
+#include "types.h"
 
 #include "py/obj.h"
 #include "py/mphal.h"

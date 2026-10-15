@@ -41,8 +41,8 @@
 
 #if MICROPY_PY_SELECT_POSIX_OPTIMISATIONS
 
-#include <string.h>
-#include <poll.h>
+
+// #include <poll.h>
 
 #if !((MP_STREAM_POLL_RD) == (POLLIN) && \
     (MP_STREAM_POLL_WR) == (POLLOUT) && \

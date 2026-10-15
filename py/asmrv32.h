@@ -27,7 +27,7 @@
 #ifndef MICROPY_INCLUDED_PY_ASMRV32_H
 #define MICROPY_INCLUDED_PY_ASMRV32_H
 
-#include <assert.h>
+// #include <assert.h>
 
 #include "py/asmbase.h"
 #include "py/emit.h"

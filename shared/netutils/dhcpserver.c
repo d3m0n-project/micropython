@@ -28,8 +28,8 @@
 //  https://www.ietf.org/rfc/rfc2131.txt
 //  https://tools.ietf.org/html/rfc2132 -- DHCP Options and BOOTP Vendor Extensions
 
-#include <stdio.h>
-#include <string.h>
+#include "stdio.hpp"
+
 #include "py/mperrno.h"
 #include "py/mphal.h"
 

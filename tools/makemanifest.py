@@ -72,7 +72,7 @@ def mkdir(filename):
 # - mp_frozen_str_content
 def generate_frozen_str_content(modules):
     output = [
-        b"#include <stdint.h>\n",
+        b"#include "types.h"\n",
         b"#define MP_FROZEN_STR_NAMES \\\n",
     ]
 

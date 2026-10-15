@@ -26,14 +26,14 @@
 #ifndef MICROPY_INCLUDED_PY_MPHAL_H
 #define MICROPY_INCLUDED_PY_MPHAL_H
 
-#include <stdint.h>
-#include <stddef.h>
+#include "types.h"
+// #include <stddef.h>
 #include "py/mpconfig.h"
 
 #ifdef MICROPY_MPHALPORT_H
 #include MICROPY_MPHALPORT_H
 #else
-#include <mphalport.h>
+// #include <mphalport.h>
 #endif
 
 // On embedded platforms, these will typically enable/disable irqs.

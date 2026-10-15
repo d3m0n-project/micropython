@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
+// #include <stdbool.h>
 
 #include "semihosting_rv32.h"
 

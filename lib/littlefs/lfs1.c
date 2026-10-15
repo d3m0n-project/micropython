@@ -7,7 +7,7 @@
 #include "lfs1.h"
 #include "lfs1_util.h"
 
-#include <inttypes.h>
+// #include <inttypes.h>
 
 
 /// Caching block device operations ///

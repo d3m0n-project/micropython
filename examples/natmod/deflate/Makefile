@@ -12,7 +12,7 @@ SRC = deflate.c
 ARCH ?= x64
 
 ifeq ($(ARCH),armv7m)
-ifeq ($(findstring clang,$(shell $(CC) --version)),clang)
+ifeq ($(findstring clang,$(shell d3c --version)),clang)
 # Link with libclang_rt.a for memset
 LINK_RUNTIME = 1
 endif

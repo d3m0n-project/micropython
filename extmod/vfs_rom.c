@@ -69,7 +69,7 @@
 // - A precomputed hash of a file, or other metadata.
 // - An optimised lookup table indexing the directory hierarchy.
 
-#include <string.h>
+
 
 #include "py/bc.h"
 #include "py/runtime.h"

@@ -6,11 +6,11 @@
 #ifndef _RE1_5_REGEXP__H
 #define _RE1_5_REGEXP__H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
-#include <assert.h>
+#include "stdio.hpp"
+#include "stdlib.h"
+
+// #include <stdarg.h>
+// #include <assert.h>
 
 #define nil ((void*)0)
 #define nelem(x) (sizeof(x)/sizeof((x)[0]))

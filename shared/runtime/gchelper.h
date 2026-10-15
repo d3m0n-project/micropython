@@ -26,10 +26,10 @@
 #ifndef MICROPY_INCLUDED_LIB_UTILS_GCHELPER_H
 #define MICROPY_INCLUDED_LIB_UTILS_GCHELPER_H
 
-#include <stdint.h>
+#include "types.h"
 
 #if MICROPY_GCREGS_SETJMP
-#include <setjmp.h>
+// #include <setjmp.h>
 typedef jmp_buf gc_helper_regs_t;
 #else
 

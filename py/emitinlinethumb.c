@@ -24,11 +24,11 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include <assert.h>
+#include "types.h"
+#include "stdio.hpp"
+
+// #include <stdarg.h>
+// #include <assert.h>
 
 #include "py/emit.h"
 #include "py/asmthumb.h"

@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <string.h>
-#include <stdio.h>
+// #include <assert.h>
+
+#include "stdio.hpp"
 
 #include "py/mpstate.h"
 #include "py/qstr.h"

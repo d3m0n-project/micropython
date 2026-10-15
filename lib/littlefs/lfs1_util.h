@@ -20,18 +20,18 @@
 #else
 
 // System includes
-#include <stdint.h>
-#include <stdbool.h>
-#include <string.h>
+#include "types.h"
+// #include <stdbool.h>
+
 
 #ifndef LFS1_NO_MALLOC
-#include <stdlib.h>
+#include "stdlib.h"
 #endif
 #ifndef LFS1_NO_ASSERT
-#include <assert.h>
+// #include <assert.h>
 #endif
 #if !defined(LFS1_NO_DEBUG) || !defined(LFS1_NO_WARN) || !defined(LFS1_NO_ERROR)
-#include <stdio.h>
+#include "stdio.hpp"
 #endif
 
 #ifdef __cplusplus

@@ -115,14 +115,14 @@ typedef long mp_off_t;
 
 // We need to provide a declaration/definition of alloca()
 #if defined(__FreeBSD__) || defined(__NetBSD__)
-#include <stdlib.h>
+#include "stdlib.h"
 #elif defined(_WIN32)
-#include <malloc.h>
+// #include <malloc.h>
 #else
-#include <alloca.h>
+// #include <alloca.h>
 #endif
 
-#include <stdint.h>
+#include "types.h"
 
 // MSVC specifics - see windows/mpconfigport.h for explanation
 #ifdef _MSC_VER

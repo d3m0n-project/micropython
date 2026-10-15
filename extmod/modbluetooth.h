@@ -28,7 +28,7 @@
 #ifndef MICROPY_INCLUDED_EXTMOD_MODBLUETOOTH_H
 #define MICROPY_INCLUDED_EXTMOD_MODBLUETOOTH_H
 
-#include <stdbool.h>
+// #include <stdbool.h>
 
 #include "py/obj.h"
 #include "py/objlist.h"

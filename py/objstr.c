@@ -25,8 +25,8 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <assert.h>
+
+// #include <assert.h>
 
 #include "py/unicode.h"
 #include "py/objstr.h"

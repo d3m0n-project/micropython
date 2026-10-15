@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include <string.h>
-#include <assert.h>
+// #include <stdbool.h>
+
+// #include <assert.h>
 
 #include "py/runtime.h"
 #include "py/builtin.h"

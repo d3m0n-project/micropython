@@ -12,7 +12,7 @@
 #include "prod.h"
 
 // Include standard library header
-#include <math.h>
+// #include <math.h>
 
 // Automatically detect if this module should include double-precision code.
 // If double precision is supported by the target architecture then it can

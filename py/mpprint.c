@@ -24,11 +24,11 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <stdarg.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
+// #include <assert.h>
+// #include <stdarg.h>
+#include "types.h"
+#include "stdio.hpp"
+
 
 #include "py/mphal.h"
 #include "py/mpprint.h"

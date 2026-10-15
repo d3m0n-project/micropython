@@ -28,8 +28,8 @@
 
 #if MICROPY_PY_MACHINE_CAN
 
-#include <stdlib.h>
-#include <string.h>
+#include "stdlib.h"
+
 #include "extmod/modmachine.h"
 #include "extmod/machine_can.h"
 #include "extmod/machine_can_port.h"

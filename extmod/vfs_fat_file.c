@@ -27,7 +27,7 @@
 #include "py/mpconfig.h"
 #if MICROPY_VFS && MICROPY_VFS_FAT
 
-#include <stdio.h>
+#include "stdio.hpp"
 
 #include "py/runtime.h"
 #include "py/stream.h"

@@ -1,4 +1,4 @@
-#include <stdint.h>
+#include "types.h"
 
 int8_t f8i(int8_t x) {
     return x ^ 1;

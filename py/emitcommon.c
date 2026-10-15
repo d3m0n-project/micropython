@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <math.h>
+// #include <assert.h>
+// #include <math.h>
 
 #include "py/emit.h"
 #include "py/nativeglue.h"

@@ -32,9 +32,9 @@
 
 #if MICROPY_PY_NETWORK_ESP_HOSTED
 
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
+#include "types.h"
+
+#include "stdio.hpp"
 
 #include "lwip/err.h"
 #include "lwip/dns.h"

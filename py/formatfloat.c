@@ -28,10 +28,10 @@
 #include "py/misc.h"
 #if MICROPY_FLOAT_IMPL != MICROPY_FLOAT_IMPL_NONE
 
-#include <assert.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <math.h>
+// #include <assert.h>
+#include "stdlib.h"
+#include "types.h"
+// #include <math.h>
 #include "py/formatfloat.h"
 #include "py/parsenum.h"
 

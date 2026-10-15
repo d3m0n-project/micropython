@@ -4,7 +4,7 @@
  */
 
 // Include common MicroPython embed configuration.
-#include <port/mpconfigport_common.h>
+// #include <port/mpconfigport_common.h>
 
 // Use the minimal starting configuration (disables all optional features).
 #define MICROPY_CONFIG_ROM_LEVEL                (MICROPY_CONFIG_ROM_LEVEL_MINIMUM)

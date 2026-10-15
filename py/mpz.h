@@ -26,7 +26,7 @@
 #ifndef MICROPY_INCLUDED_PY_MPZ_H
 #define MICROPY_INCLUDED_PY_MPZ_H
 
-#include <stdint.h>
+#include "types.h"
 
 #include "py/mpconfig.h"
 #include "py/misc.h"

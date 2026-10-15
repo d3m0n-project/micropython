@@ -27,8 +27,8 @@
 // This file should be compiled when included from vfs_lfs.c.
 #if defined(LFS_BUILD_VERSION)
 
-#include <stdio.h>
-#include <string.h>
+#include "stdio.hpp"
+
 
 #include "py/runtime.h"
 #include "py/stream.h"

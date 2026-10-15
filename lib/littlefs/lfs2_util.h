@@ -39,22 +39,22 @@
 #endif
 
 // System includes
-#include <stdint.h>
-#include <stdbool.h>
-#include <string.h>
-#include <inttypes.h>
+#include "types.h"
+// #include <stdbool.h>
+
+// #include <inttypes.h>
 
 #ifndef LFS2_NO_MALLOC
-#include <stdlib.h>
+#include "stdlib.h"
 #endif
 #ifndef LFS2_NO_ASSERT
-#include <assert.h>
+// #include <assert.h>
 #endif
 #if !defined(LFS2_NO_DEBUG) || \
         !defined(LFS2_NO_WARN) || \
         !defined(LFS2_NO_ERROR) || \
         defined(LFS2_YES_TRACE)
-#include <stdio.h>
+#include "stdio.hpp"
 #endif
 
 #ifdef __cplusplus

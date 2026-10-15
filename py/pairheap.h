@@ -35,7 +35,7 @@
 // Algorithmica 1:111-129, 1986.
 // https://www.cs.cmu.edu/~sleator/papers/pairing-heaps.pdf
 
-#include <assert.h>
+// #include <assert.h>
 #include "py/obj.h"
 
 // This struct forms the nodes of the heap and is intended to be extended, by

@@ -41,8 +41,8 @@ typedef struct _mp_obj_str_t {
 // meaning that their len and data/items entries are at the same offsets in the struct.
 // This allows the same code to be used for str/bytes and bytearray.
 #define MP_STATIC_ASSERT_STR_ARRAY_COMPATIBLE \
-    MP_STATIC_ASSERT(offsetof(mp_obj_str_t, len) == offsetof(mp_obj_array_t, len) \
-    && offsetof(mp_obj_str_t, data) == offsetof(mp_obj_array_t, items))
+    MP_STATIC_ASSERT(OFFSETOF(mp_obj_str_t, len) == OFFSETOF(mp_obj_array_t, len) \
+    && OFFSETOF(mp_obj_str_t, data) == OFFSETOF(mp_obj_array_t, items))
 
 #define MP_DEFINE_STR_OBJ(obj_name, str) mp_obj_str_t obj_name = {{&mp_type_str}, 0, sizeof(str) - 1, (const byte *)str}
 

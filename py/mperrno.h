@@ -87,7 +87,7 @@
 
 // MP_Exxx errno's are defined in terms of system supplied ones
 
-#include <errno.h>
+// #include <errno.h>
 
 #define MP_EPERM            EPERM
 #define MP_ENOENT           ENOENT

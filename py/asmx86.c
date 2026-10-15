@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <assert.h>
-#include <string.h>
+#include "types.h"
+#include "stdio.hpp"
+// #include <assert.h>
+
 
 #include "py/mpconfig.h"
 

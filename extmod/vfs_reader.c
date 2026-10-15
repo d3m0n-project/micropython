@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "stdio.hpp"
+
+#include "stdlib.h"
 
 #include "py/runtime.h"
 #include "py/stream.h"
@@ -36,9 +36,9 @@
 #if MICROPY_READER_VFS
 
 #ifndef MICROPY_READER_VFS_DEFAULT_BUFFER_SIZE
-#define MICROPY_READER_VFS_DEFAULT_BUFFER_SIZE (2 * MICROPY_BYTES_PER_GC_BLOCK - offsetof(mp_reader_vfs_t, buf))
+#define MICROPY_READER_VFS_DEFAULT_BUFFER_SIZE (2 * MICROPY_BYTES_PER_GC_BLOCK - OFFSETOF(mp_reader_vfs_t, buf))
 #endif
-#define MICROPY_READER_VFS_MIN_BUFFER_SIZE (MICROPY_BYTES_PER_GC_BLOCK - offsetof(mp_reader_vfs_t, buf))
+#define MICROPY_READER_VFS_MIN_BUFFER_SIZE (MICROPY_BYTES_PER_GC_BLOCK - OFFSETOF(mp_reader_vfs_t, buf))
 #define MICROPY_READER_VFS_MAX_BUFFER_SIZE (255)
 
 typedef struct _mp_reader_vfs_t {

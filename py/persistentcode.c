@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+#include "types.h"
+#include "stdio.hpp"
+
+// #include <assert.h>
 
 #include "py/reader.h"
 #include "py/nativeglue.h"
@@ -728,9 +728,9 @@ void mp_raw_code_save(mp_compiled_module_t *cm, mp_print_t *print) {
 
 #if MICROPY_PERSISTENT_CODE_SAVE_FILE
 
-#include <unistd.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+// #include <unistd.h>
+// #include <sys/stat.h>
+// #include <fcntl.h>
 
 static void fd_print_strn(void *env, const char *str, size_t len) {
     int fd = (intptr_t)env;

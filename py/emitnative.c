@@ -42,9 +42,9 @@
 
 // for x in l[0:8]: can be compiled into a native loop if l has pointer type
 
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+#include "stdio.hpp"
+
+// #include <assert.h>
 
 #include "py/emit.h"
 #include "py/nativeglue.h"
@@ -95,17 +95,17 @@
 #define SIZEOF_NLR_BUF (sizeof(nlr_buf_t) / sizeof(uintptr_t))
 #endif
 #define SIZEOF_CODE_STATE (sizeof(mp_code_state_native_t) / sizeof(uintptr_t))
-#define OFFSETOF_CODE_STATE_STATE (offsetof(mp_code_state_native_t, state) / sizeof(uintptr_t))
-#define OFFSETOF_CODE_STATE_FUN_BC (offsetof(mp_code_state_native_t, fun_bc) / sizeof(uintptr_t))
-#define OFFSETOF_CODE_STATE_IP (offsetof(mp_code_state_native_t, ip) / sizeof(uintptr_t))
-#define OFFSETOF_CODE_STATE_SP (offsetof(mp_code_state_native_t, sp) / sizeof(uintptr_t))
-#define OFFSETOF_CODE_STATE_N_STATE (offsetof(mp_code_state_native_t, n_state) / sizeof(uintptr_t))
-#define OFFSETOF_OBJ_FUN_BC_CONTEXT (offsetof(mp_obj_fun_bc_t, context) / sizeof(uintptr_t))
-#define OFFSETOF_OBJ_FUN_BC_CHILD_TABLE (offsetof(mp_obj_fun_bc_t, child_table) / sizeof(uintptr_t))
-#define OFFSETOF_OBJ_FUN_BC_BYTECODE (offsetof(mp_obj_fun_bc_t, bytecode) / sizeof(uintptr_t))
-#define OFFSETOF_MODULE_CONTEXT_QSTR_TABLE (offsetof(mp_module_context_t, constants.qstr_table) / sizeof(uintptr_t))
-#define OFFSETOF_MODULE_CONTEXT_OBJ_TABLE (offsetof(mp_module_context_t, constants.obj_table) / sizeof(uintptr_t))
-#define OFFSETOF_MODULE_CONTEXT_GLOBALS (offsetof(mp_module_context_t, module.globals) / sizeof(uintptr_t))
+#define OFFSETOF_CODE_STATE_STATE (OFFSETOF(mp_code_state_native_t, state) / sizeof(uintptr_t))
+#define OFFSETOF_CODE_STATE_FUN_BC (OFFSETOF(mp_code_state_native_t, fun_bc) / sizeof(uintptr_t))
+#define OFFSETOF_CODE_STATE_IP (OFFSETOF(mp_code_state_native_t, ip) / sizeof(uintptr_t))
+#define OFFSETOF_CODE_STATE_SP (OFFSETOF(mp_code_state_native_t, sp) / sizeof(uintptr_t))
+#define OFFSETOF_CODE_STATE_N_STATE (OFFSETOF(mp_code_state_native_t, n_state) / sizeof(uintptr_t))
+#define OFFSETOF_OBJ_FUN_BC_CONTEXT (OFFSETOF(mp_obj_fun_bc_t, context) / sizeof(uintptr_t))
+#define OFFSETOF_OBJ_FUN_BC_CHILD_TABLE (OFFSETOF(mp_obj_fun_bc_t, child_table) / sizeof(uintptr_t))
+#define OFFSETOF_OBJ_FUN_BC_BYTECODE (OFFSETOF(mp_obj_fun_bc_t, bytecode) / sizeof(uintptr_t))
+#define OFFSETOF_MODULE_CONTEXT_QSTR_TABLE (OFFSETOF(mp_module_context_t, constants.qstr_table) / sizeof(uintptr_t))
+#define OFFSETOF_MODULE_CONTEXT_OBJ_TABLE (OFFSETOF(mp_module_context_t, constants.obj_table) / sizeof(uintptr_t))
+#define OFFSETOF_MODULE_CONTEXT_GLOBALS (OFFSETOF(mp_module_context_t, module.globals) / sizeof(uintptr_t))
 
 // If not already defined, set parent args to same as child call registers
 #ifndef REG_PARENT_RET

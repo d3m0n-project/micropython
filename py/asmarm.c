@@ -25,9 +25,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <assert.h>
-#include <string.h>
+#include "stdio.hpp"
+// #include <assert.h>
+
 
 #include "py/mpconfig.h"
 

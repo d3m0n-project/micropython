@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
+#include "types.h"
 
 #include "py/objcode.h"
 #include "py/objfun.h"

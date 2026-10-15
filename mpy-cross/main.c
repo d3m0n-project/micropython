@@ -24,11 +24,11 @@
  * THE SOFTWARE.
  */
 
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+// #include <errno.h>
+#include "stdio.hpp"
+
+#include "stdlib.h"
+// #include <unistd.h>
 
 #include "py/builtin.h"
 #include "py/compile.h"

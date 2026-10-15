@@ -26,9 +26,9 @@
 #ifndef MICROPY_INCLUDED_PY_RINGBUF_H
 #define MICROPY_INCLUDED_PY_RINGBUF_H
 
-#include <stddef.h>
-#include <stdint.h>
-#include <string.h>
+// #include <stddef.h>
+#include "types.h"
+
 
 #include "py/mpconfig.h"
 

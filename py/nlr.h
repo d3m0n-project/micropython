@@ -29,9 +29,9 @@
 // non-local return
 // exception handling, basically a stack of setjmp/longjmp buffers
 
-#include <limits.h>
-#include <assert.h>
-#include <stdbool.h>
+
+// #include <assert.h>
+// #include <stdbool.h>
 
 #include "py/mpconfig.h"
 
@@ -117,7 +117,7 @@
 // *FORMAT-ON*
 
 #if MICROPY_NLR_SETJMP
-#include <setjmp.h>
+// #include <setjmp.h>
 #endif
 
 typedef struct _nlr_buf_t nlr_buf_t;

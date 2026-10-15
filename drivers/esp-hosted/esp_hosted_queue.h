@@ -29,9 +29,9 @@
 #ifndef MICROPY_INCLUDED_DRIVERS_ESP_HOSTED_QUEUE_H
 #define MICROPY_INCLUDED_DRIVERS_ESP_HOSTED_QUEUE_H
 
-#include <stdbool.h>
-#include <stddef.h>
-#include <string.h>
+// #include <stdbool.h>
+// #include <stddef.h>
+
 
 typedef struct {
     size_t head;

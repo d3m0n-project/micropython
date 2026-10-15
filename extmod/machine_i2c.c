@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
+#include "stdio.hpp"
+#include "types.h"
+
 
 #include "py/mperrno.h"
 #include "py/mphal.h"

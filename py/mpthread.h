@@ -35,7 +35,7 @@ struct _mp_state_thread_t;
 #ifdef MICROPY_MPTHREADPORT_H
 #include MICROPY_MPTHREADPORT_H
 #else
-#include <mpthreadport.h>
+// #include <mpthreadport.h>
 #endif
 
 struct _mp_state_thread_t *mp_thread_get_state(void);

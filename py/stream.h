@@ -31,6 +31,8 @@
 #include "py/obj.h"
 #include "py/mperrno.h"
 
+typedef long mp_off_t;
+
 #define MP_STREAM_ERROR ((mp_uint_t)-1)
 
 // Stream ioctl request codes
@@ -129,7 +131,7 @@ mp_off_t mp_stream_seek(mp_obj_t stream, mp_off_t offset, int whence, int *errco
 void mp_stream_write_adaptor(void *self, const char *buf, size_t len);
 
 #if MICROPY_STREAMS_POSIX_API
-#include <sys/types.h>
+// #include <sys/types.h>
 // Functions with POSIX-compatible signatures
 // "stream" is assumed to be a pointer to a concrete object with the stream protocol
 ssize_t mp_stream_posix_write(void *stream, const void *buf, size_t len);

@@ -25,8 +25,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdarg.h>
-#include <stdio.h>
+// #include <stdarg.h>
+#include "stdio.hpp"
 
 #include "py/emit.h"
 #include "py/runtime.h"

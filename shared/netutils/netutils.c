@@ -25,9 +25,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
+#include "types.h"
+#include "stdio.hpp"
+
 
 #include "py/runtime.h"
 #include "shared/netutils/netutils.h"

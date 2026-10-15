@@ -124,7 +124,7 @@ else
 $(error architecture '$(ARCH)' not supported)
 endif
 
-ifneq ($(findstring -musl,$(shell $(CC) -dumpmachine)),)
+ifneq ($(findstring -musl,$(shell d3c -dumpmachine)),)
 USE_MUSL := 1
 endif
 
@@ -133,7 +133,7 @@ ifeq ($(ARCH),$(filter $(ARCH),rv32imc rv64imc))
 # bare metal RISC-V toolchain with Picolibc rather than Newlib, and the default
 # is "nosys" so a value must be provided.  To avoid having per-distro
 # workarounds, always select Picolibc if available.
-PICOLIBC_SPECS := $(shell $(CC) --print-file-name=picolibc.specs)
+PICOLIBC_SPECS := $(shell d3c --print-file-name=picolibc.specs)
 ifneq ($(PICOLIBC_SPECS),picolibc.specs)
 # LLVM toolchains supporting more than one target seem to ignore the `-march`
 # flag passed when looking up the specs file, so if your system has Picolibc
@@ -184,8 +184,8 @@ endif
 # that some symbols are duplicated between the builtins library and libc.a.  In
 # these cases let's leave it to the user to figure out how to handle this for
 # the time being.
-TOOLCHAIN_LIBGCC := $(realpath $(shell $(CC) $(CFLAGS) --print-libgcc-file-name))
-ifneq ($(findstring clang,$(shell $(CC) --version)),clang)
+TOOLCHAIN_LIBGCC := $(realpath $(shell d3c $(CFLAGS) --print-libgcc-file-name))
+ifneq ($(findstring clang,$(shell d3c --version)),clang)
 LIBGCC_PATH = $(TOOLCHAIN_LIBGCC)
 else
 ifneq ($(LINK_CLANG_CLANGRT),0)
@@ -194,7 +194,7 @@ else
 LIBGCC_PATH =
 endif
 endif
-LIBM_PATH := $(realpath $(shell $(CC) $(CFLAGS) --print-file-name=$(LIBM_NAME)))
+LIBM_PATH := $(realpath $(shell d3c $(CFLAGS) --print-file-name=$(LIBM_NAME)))
 ifeq ($(USE_PICOLIBC),1)
 ifeq ($(LIBM_PATH),)
 PICOLIBC_ROOT ?= /usr/lib/picolibc/$(PICOLIBC_BASE)/lib
@@ -202,8 +202,8 @@ LIBM_PATH := $(PICOLIBC_ROOT)/$(PICOLIBC_TARGET)/$(LIBM_NAME)
 endif
 endif
 ifneq ($(LINK_CLANG_LIBC),)
-ifeq ($(findstring clang,$(shell $(CC) --version)),clang)
-LIBC_PATH := $(realpath $(shell $(CC) $(CFLAGS) --print-file-name=libc.a))
+ifeq ($(findstring clang,$(shell d3c --version)),clang)
+LIBC_PATH := $(realpath $(shell d3c $(CFLAGS) --print-file-name=libc.a))
 else
 LIBC_PATH =
 endif
@@ -243,12 +243,12 @@ $(CONFIG_H): $(SRC)
 # Build .o from .c source files
 $(BUILD)/%.o: %.c $(CONFIG_H) Makefile
 	$(ECHO) "CC $<"
-	$(Q)$(CC) $(CFLAGS) -o $@ -c $<
+	$(Q)d3c $(CFLAGS) -o $@ -c $<
 
 # Build .o from .S source files
 $(BUILD)/%.o: %.S $(CONFIG_H) Makefile
 	$(ECHO) "AS $<"
-	$(Q)$(CC) $(CFLAGS) -o $@ -c $<
+	$(Q)d3c $(CFLAGS) -o $@ -c $<
 
 # Build .mpy from .py source files
 $(BUILD)/%.mpy: %.py

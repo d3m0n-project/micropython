@@ -30,8 +30,8 @@
 #include "py/mpconfig.h"
 #if MICROPY_VFS && MICROPY_VFS_FAT
 
-#include <stdint.h>
-#include <stdio.h>
+#include "types.h"
+#include "stdio.hpp"
 
 #include "py/mphal.h"
 

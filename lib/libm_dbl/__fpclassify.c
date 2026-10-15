@@ -1,5 +1,5 @@
-#include <math.h>
-#include <stdint.h>
+// #include <math.h>
+#include "types.h"
 
 int __fpclassifyd(double x)
 {

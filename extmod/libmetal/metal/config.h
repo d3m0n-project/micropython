@@ -28,7 +28,7 @@
 #ifndef MICROPY_INCLUDED_METAL_MICROPYTHON_H
 #define MICROPY_INCLUDED_METAL_MICROPYTHON_H
 
-#include <stdlib.h>
+#include "stdlib.h"
 
 // Port-specific config.
 #include "mpmetalport.h"

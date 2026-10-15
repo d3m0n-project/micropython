@@ -25,11 +25,11 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+// #include <assert.h>
+// #include <stdarg.h>
+#include "stdio.hpp"
+
+// #include <unistd.h>
 
 #include "py/parsenum.h"
 #include "py/compile.h"

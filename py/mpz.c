@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <assert.h>
+
+// #include <assert.h>
 
 #include "py/mpz.h"
 

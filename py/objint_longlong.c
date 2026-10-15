@@ -25,8 +25,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <string.h>
+#include "stdlib.h"
+
 
 #include "py/smallint.h"
 #include "py/objint_impl.h"
@@ -34,7 +34,7 @@
 #include "py/misc.h"
 
 #if MICROPY_PY_BUILTINS_FLOAT
-#include <math.h>
+// #include <math.h>
 #endif
 
 #if MICROPY_LONGINT_IMPL == MICROPY_LONGINT_IMPL_LONGLONG

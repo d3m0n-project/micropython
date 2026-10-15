@@ -25,11 +25,11 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <string.h>
-#include <assert.h>
+#include "types.h"
+#include "stdlib.h"
+// #include <stddef.h>
+
+// #include <assert.h>
 
 #include "py/binary.h"
 #include "py/smallint.h"
@@ -39,7 +39,7 @@
 // Helpers to work with binary-encoded data
 
 #ifndef alignof
-#define alignof(type) offsetof(struct { char c; type t; }, t)
+#define alignof(type) OFFSETOF(struct { char c; type t; }, t)
 #endif
 
 // MicroPython V1.x truncates integers when writing into arrays,

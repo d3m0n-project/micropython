@@ -80,7 +80,7 @@ SRC_THIRDPARTY_C += $(SRC_BTSTACK_C)
 
 # Suppress some warnings.
 BTSTACK_WARNING_CFLAGS = -Wno-old-style-definition -Wno-unused-variable -Wno-unused-parameter -Wno-implicit-fallthrough
-ifneq ($(CC),clang)
+ifneq (d3c,clang)
 BTSTACK_WARNING_CFLAGS += -Wno-format
 endif
 $(BUILD)/lib/btstack/src/%.o: CFLAGS += $(BTSTACK_WARNING_CFLAGS)

@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
+#include "stdio.hpp"
 
 #include "py/objlist.h"
 #include "py/objstringio.h"

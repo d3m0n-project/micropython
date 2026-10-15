@@ -14,7 +14,7 @@
 #if defined(_PICOLIBC__) && !defined(HAVE_BUILTIN_ALLOCA)
 #define alloca(n) m_malloc(n)
 #else
-#include <alloca.h>
+// #include <alloca.h>
 #endif
 #endif
 

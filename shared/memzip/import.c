@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "stdio.hpp"
 
 #include "py/lexer.h"
 #include "memzip.h"

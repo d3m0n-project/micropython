@@ -7,8 +7,8 @@
 #ifndef LFS1_H
 #define LFS1_H
 
-#include <stdint.h>
-#include <stdbool.h>
+#include "types.h"
+// #include <stdbool.h>
 
 #ifdef __cplusplus
 extern "C"

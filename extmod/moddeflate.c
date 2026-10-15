@@ -28,8 +28,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <string.h>
+#include "stdio.hpp"
+
 
 #include "py/runtime.h"
 #include "py/stream.h"

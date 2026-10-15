@@ -122,7 +122,7 @@ We also need a Makefile at this point for the port:
    # Define how to build the firmware.
    $(BUILD)/firmware.elf: $(OBJ)
        $(ECHO) "LINK $@"
-       $(Q)$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+       $(Q)d3c $(LDFLAGS) -o $@ $^ $(LIBS)
        $(Q)$(SIZE) $@
 
    # Include remaining core make rules.
@@ -142,7 +142,7 @@ The following is an example of an ``mpconfigport.h`` file:
 
 .. code-block:: c
 
-   #include <stdint.h>
+   #include "types.h"
 
    // Python internal features.
    #define MICROPY_ENABLE_GC                       (1)

@@ -25,8 +25,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <string.h>
+#include "stdio.hpp"
+
 
 #include "py/objstr.h"
 #include "py/objstringio.h"

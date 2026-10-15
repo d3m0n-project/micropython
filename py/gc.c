@@ -25,15 +25,15 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <stdio.h>
-#include <string.h>
+// #include <assert.h>
+#include "stdio.hpp"
+
 
 #include "py/gc.h"
 #include "py/runtime.h"
 
 #if MICROPY_DEBUG_VALGRIND
-#include <valgrind/memcheck.h>
+// #include <valgrind/memcheck.h>
 #endif
 
 #if MICROPY_ENABLE_GC
@@ -469,8 +469,8 @@ void gc_collect_start(void) {
     // correctly in the mp_state_ctx structure.  We scan nlr_top, dict_locals,
     // dict_globals, then the root pointer section of mp_state_vm.
     void **ptrs = (void **)(void *)&mp_state_ctx;
-    size_t root_start = offsetof(mp_state_ctx_t, thread.dict_locals);
-    size_t root_end = offsetof(mp_state_ctx_t, vm.qstr_last_chunk);
+    size_t root_start = OFFSETOF(mp_state_ctx_t, thread.dict_locals);
+    size_t root_end = OFFSETOF(mp_state_ctx_t, vm.qstr_last_chunk);
     gc_collect_root(ptrs + root_start / sizeof(void *), (root_end - root_start) / sizeof(void *));
 
     #if MICROPY_ENABLE_PYSTACK
@@ -1359,7 +1359,7 @@ void gc_dump_alloc_table(const mp_print_t *print) {
                 case AT_HEAD: {
                     c = 'h';
                     void **ptrs = (void**)(void*)&mp_state_ctx;
-                    mp_uint_t len = offsetof(mp_state_ctx_t, vm.stack_top) / sizeof(mp_uint_t);
+                    mp_uint_t len = OFFSETOF(mp_state_ctx_t, vm.stack_top) / sizeof(mp_uint_t);
                     for (mp_uint_t i = 0; i < len; i++) {
                         mp_uint_t ptr = (mp_uint_t)ptrs[i];
                         if (gc_get_ptr_area(ptr) && BLOCK_FROM_PTR(ptr) == bl) {

@@ -26,9 +26,9 @@
 
 #include "py/mpconfig.h"
 
-#include <stdint.h>
-#include <string.h>
-#include <stdarg.h>
+#include "types.h"
+
+// #include <stdarg.h>
 
 #include "py/obj.h"
 #include "py/mphal.h"

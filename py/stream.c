@@ -25,8 +25,8 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <unistd.h>
+
+// #include <unistd.h>
 
 #include "py/objstr.h"
 #include "py/stream.h"
@@ -532,7 +532,7 @@ MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mp_stream_ioctl_obj, 2, 3, stream_ioctl);
  * POSIX-compatible software to work with MicroPython streams.
  */
 
-#include <errno.h>
+// #include <errno.h>
 
 ssize_t mp_stream_posix_write(void *stream, const void *buf, size_t len) {
     mp_obj_base_t *o = stream;

@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+#include "stdlib.h"
+#include "stdio.hpp"
+
+// #include <assert.h>
 
 #include "py/parsenum.h"
 #include "py/runtime.h"
@@ -39,7 +39,7 @@
 #define _UCRT_NOISY_NAN
 #endif
 
-#include <math.h>
+// #include <math.h>
 #include "py/formatfloat.h"
 
 #if MICROPY_OBJ_REPR != MICROPY_OBJ_REPR_C && MICROPY_OBJ_REPR != MICROPY_OBJ_REPR_D

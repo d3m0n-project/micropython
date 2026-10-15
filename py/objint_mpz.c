@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <stdio.h>
-#include <assert.h>
+
+#include "stdio.hpp"
+// #include <assert.h>
 
 #include "py/parsenumbase.h"
 #include "py/smallint.h"
@@ -34,7 +34,7 @@
 #include "py/runtime.h"
 
 #if MICROPY_PY_BUILTINS_FLOAT
-#include <math.h>
+// #include <math.h>
 #endif
 
 #if MICROPY_LONGINT_IMPL == MICROPY_LONGINT_IMPL_MPZ

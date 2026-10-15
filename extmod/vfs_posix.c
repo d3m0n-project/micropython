@@ -37,17 +37,17 @@
 #error "MICROPY_VFS_POSIX requires MICROPY_ENABLE_FINALISER"
 #endif
 
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <dirent.h>
+// #include <errno.h>
+#include "stdio.hpp"
+
+// #include <sys/stat.h>
+// #include <unistd.h>
+// #include <dirent.h>
 #ifdef _MSC_VER
-#include <direct.h> // For mkdir etc.
+// #include <direct.h> // For mkdir etc.
 #endif
 #ifdef _WIN32
-#include <windows.h>
+// #include <windows.h>
 #endif
 
 typedef struct _mp_obj_vfs_posix_t {
@@ -390,14 +390,14 @@ static MP_DEFINE_CONST_FUN_OBJ_2(vfs_posix_stat_obj, vfs_posix_stat);
 #endif
 
 #if USE_STATFS
-#include <sys/vfs.h>
+// #include <sys/vfs.h>
 #define STRUCT_STATVFS struct statfs
 #define STATVFS statfs
 #define F_FAVAIL sb.f_ffree
 #define F_NAMEMAX sb.f_namelen
 #define F_FLAG sb.f_flags
 #else
-#include <sys/statvfs.h>
+// #include <sys/statvfs.h>
 #define STRUCT_STATVFS struct statvfs
 #define STATVFS statvfs
 #define F_FAVAIL sb.f_favail

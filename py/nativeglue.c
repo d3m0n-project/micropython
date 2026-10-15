@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+// #include <stdarg.h>
+#include "stdio.hpp"
+
+// #include <assert.h>
 
 #include "py/binary.h"
 #include "py/runtime.h"

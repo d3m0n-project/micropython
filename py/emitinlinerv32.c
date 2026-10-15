@@ -24,12 +24,12 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <stdarg.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+// #include <assert.h>
+// #include <stdarg.h>
+#include "types.h"
+#include "stdlib.h"
+#include "stdio.hpp"
+
 
 #include "py/emit.h"
 #include "py/misc.h"

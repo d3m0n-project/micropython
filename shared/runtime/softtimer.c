@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stddef.h>
+#include "types.h"
+// #include <stddef.h>
 #include "py/gc.h"
 #include "py/mphal.h"
 #include "py/runtime.h"
@@ -137,7 +137,7 @@ void soft_timer_gc_mark_all(void) {
 void soft_timer_static_init(soft_timer_entry_t *entry, uint16_t mode, uint32_t delta_ms, void (*cb)(soft_timer_entry_t *)) {
     // Ensure that pairheap is always the first member of soft_timer_entry_t
     // to allow casting between pointers of soft_timer_entry_t and mp_pairheap_t.
-    MP_STATIC_ASSERT(offsetof(soft_timer_entry_t, pairheap) == 0);
+    MP_STATIC_ASSERT(OFFSETOF(soft_timer_entry_t, pairheap) == 0);
 
     mp_pairheap_init_node(soft_timer_lt, &entry->pairheap);
     entry->flags = 0;

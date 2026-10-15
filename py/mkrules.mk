@@ -45,7 +45,7 @@ CXXFLAGS += $(filter-out -Wmissing-prototypes -Wold-style-definition -std=gnu99 
 # -nostdlib in LDFLAGS and C++ source files are provided.
 ifneq ($(findstring nostdlib,"$(LDFLAGS)"),)
 ifneq ($(SRC_CXX)$(SRC_USERMOD_CXX)$(SRC_USERMOD_LIB_CXX),)
-LIBSTDCPP_FILE_NAME = "$(shell $(CXX) $(CXXFLAGS) -print-file-name=libstdc++.a)"
+LIBSTDCPP_FILE_NAME = "$(shell d3c $(CXXFLAGS) -print-file-name=libstdc++.a)"
 LDFLAGS += -L"$(shell dirname $(LIBSTDCPP_FILE_NAME))"
 endif
 endif
@@ -77,7 +77,7 @@ QSTR_GEN_CXXFLAGS += $(QSTR_GEN_FLAGS)
 vpath %.S . $(TOP) $(USER_C_MODULES) $(USERMOD_DIR_PARENTS)
 $(BUILD)/%.o: %.S
 	$(ECHO) "CC $<"
-	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
+	$(Q)d3c $(CFLAGS) -c -o $@ $<
 
 vpath %.s . $(TOP) $(USER_C_MODULES) $(USERMOD_DIR_PARENTS)
 $(BUILD)/%.o: %.s
@@ -86,7 +86,7 @@ $(BUILD)/%.o: %.s
 
 define compile_c
 $(ECHO) "CC $<"
-$(Q)$(CC) $(CFLAGS) -c -MD -MF $(@:.o=.d) -o $@ $< || (echo -e $(HELP_BUILD_ERROR); false)
+$(Q)d3c $(CFLAGS) -c -MD -MF $(@:.o=.d) -o $@ $< || (echo -e $(HELP_BUILD_ERROR); false)
 @# The following fixes the dependency file.
 @# See http://make.paulandlesley.org/autodep.html for details.
 @# Regex adjusted from the above to play better with Windows paths, etc.
@@ -98,7 +98,7 @@ endef
 
 define compile_cxx
 $(ECHO) "CXX $<"
-$(Q)$(CXX) $(CXXFLAGS) -c -MD -MF $(@:.o=.d) -o $@ $< || (echo -e $(HELP_BUILD_ERROR); false)
+$(Q)d3c $(CXXFLAGS) -c -MD -MF $(@:.o=.d) -o $@ $< || (echo -e $(HELP_BUILD_ERROR); false)
 @# The following fixes the dependency file.
 @# See http://make.paulandlesley.org/autodep.html for details.
 @# Regex adjusted from the above to play better with Windows paths, etc.
@@ -235,7 +235,7 @@ ifneq ($(PROG),)
 
 # The executable should have an .exe extension for builds targeting 'pure'
 # Windows, i.e. msvc or mingw builds, but not when using msys or cygwin's gcc.
-COMPILER_TARGET := $(shell $(CC) -dumpmachine)
+COMPILER_TARGET := $(shell d3c -dumpmachine)
 ifneq (,$(findstring mingw,$(COMPILER_TARGET)))
 PROG := $(PROG).exe
 endif
@@ -246,7 +246,7 @@ $(BUILD)/$(PROG): $(OBJ)
 	$(ECHO) "LINK $@"
 # Do not pass COPT here - it's *C* compiler optimizations. For example,
 # we may want to compile using Thumb, but link with non-Thumb libc.
-	$(Q)$(CC) -o $@ $^ $(LIBS) $(LDFLAGS)
+	$(Q)d3c -o $@ $^ $(LIBS) $(LDFLAGS)
 ifndef DEBUG
 ifdef STRIP
 	$(Q)$(STRIP) $(STRIPFLAGS_EXTRA) $@
@@ -298,9 +298,9 @@ print-cfg:
 .PHONY: print-cfg
 
 print-def:
-	@$(ECHO) "The following defines are built into the $(CC) compiler"
+	@$(ECHO) "The following defines are built into the d3c compiler"
 	$(TOUCH) __empty__.c
-	@$(CC) -E -Wp,-dM __empty__.c
+	@d3c -E -Wp,-dM __empty__.c
 	@$(RM) -f __empty__.c
 
 -include $(OBJ:.o=.P)

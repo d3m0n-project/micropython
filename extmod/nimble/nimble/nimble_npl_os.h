@@ -29,8 +29,8 @@
 
 // This is included by nimble/nimble_npl.h -- include that rather than this file directly.
 
-#include <stdint.h>
-#include <limits.h>
+#include "types.h"
+
 
 // --- Configuration of NimBLE data structures --------------------------------
 

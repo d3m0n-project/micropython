@@ -30,10 +30,10 @@
 
 #if MICROPY_PY_NETWORK && MICROPY_PY_NETWORK_NINAW10
 
-#include <string.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdint.h>
+
+#include "stdio.hpp"
+// #include <stdarg.h>
+#include "types.h"
 
 #include "py/objtuple.h"
 #include "py/objlist.h"

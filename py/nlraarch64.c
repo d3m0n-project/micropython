@@ -42,7 +42,7 @@ __asm(
     ".global nlr_push        \n"
     #endif
     "mov x9, sp              \n"
-    "stp lr,  x9,  [x0,  #16]\n" // 16 == offsetof(nlr_buf_t, regs)
+    "stp lr,  x9,  [x0,  #16]\n" // 16 == OFFSETOF(nlr_buf_t, regs)
     "stp x19, x20, [x0,  #32]\n"
     "stp x21, x22, [x0,  #48]\n"
     "stp x23, x24, [x0,  #64]\n"
@@ -59,7 +59,7 @@ __asm(
 MP_NORETURN void nlr_jump(void *val) {
     MP_NLR_JUMP_HEAD(val, top)
 
-    MP_STATIC_ASSERT(offsetof(nlr_buf_t, regs) == 16); // asm assumes it
+    MP_STATIC_ASSERT(OFFSETOF(nlr_buf_t, regs) == 16); // asm assumes it
 
     __asm volatile (
         "mov x0, %0              \n"
@@ -69,7 +69,7 @@ MP_NORETURN void nlr_jump(void *val) {
         "ldp x23, x24, [x0,  #64]\n"
         "ldp x21, x22, [x0,  #48]\n"
         "ldp x19, x20, [x0,  #32]\n"
-        "ldp lr,  x9,  [x0,  #16]\n" // 16 == offsetof(nlr_buf_t, regs)
+        "ldp lr,  x9,  [x0,  #16]\n" // 16 == OFFSETOF(nlr_buf_t, regs)
         "mov sp, x9              \n"
         "mov x0, #1              \n"  // non-local return
         "ret                     \n"

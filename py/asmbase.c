@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
-#include <string.h>
+// #include <assert.h>
+
 
 #include "py/obj.h"
 #include "py/misc.h"

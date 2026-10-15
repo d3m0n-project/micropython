@@ -29,8 +29,8 @@
 
 #if MICROPY_PY_CRYPTOLIB
 
-#include <assert.h>
-#include <string.h>
+// #include <assert.h>
+
 
 #include "py/runtime.h"
 
@@ -61,7 +61,7 @@ struct ctr_params {
 #endif
 
 #if MICROPY_SSL_MBEDTLS
-#include <mbedtls/aes.h>
+// #include <mbedtls/aes.h>
 
 // we can't run mbedtls AES key schedule until we know whether we're used for encrypt or decrypt.
 // therefore, we store the key & keysize and on the first call to encrypt/decrypt we override them

@@ -24,11 +24,11 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+// #include <stdbool.h>
+#include "types.h"
+#include "stdio.hpp"
+
+// #include <assert.h>
 
 #include "py/scope.h"
 #include "py/emit.h"

@@ -25,10 +25,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stddef.h>
-#include <string.h>
-#include <assert.h>
+#include "stdio.hpp"
+// #include <stddef.h>
+
+// #include <assert.h>
 
 #include "py/objtype.h"
 #include "py/runtime.h"
@@ -991,7 +991,7 @@ union _setname_list_t {
 // Append any `__set_name__` method on `value` to the setname list, with its per-attr args
 static setname_list_t *setname_maybe_bind_append(setname_list_t *tail, mp_obj_t name, mp_obj_t value) {
     // make certain our type-punning is safe:
-    MP_STATIC_ASSERT_NONCONSTEXPR(offsetof(setname_list_t, next) == offsetof(setname_list_t, call[2]));
+    MP_STATIC_ASSERT_NONCONSTEXPR(OFFSETOF(setname_list_t, next) == OFFSETOF(setname_list_t, call[2]));
 
     // tail is a blank list entry
     mp_load_method_maybe(value, MP_QSTR___set_name__, tail->call);

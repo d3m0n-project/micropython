@@ -1,4 +1,4 @@
-#include <math.h>
+// #include <math.h>
 
 double __lgamma_r(double, int*);
 

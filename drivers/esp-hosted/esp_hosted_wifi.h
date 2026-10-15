@@ -29,8 +29,8 @@
 #ifndef MICROPY_INCLUDED_DRIVERS_ESP_HOSTED_WIFI_H
 #define MICROPY_INCLUDED_DRIVERS_ESP_HOSTED_WIFI_H
 
-#include <stdint.h>
-#include <stdlib.h>
+#include "types.h"
+#include "stdlib.h"
 
 #define ESP_HOSTED_IPV4_ADDR_LEN    (4)
 #define ESP_HOSTED_MAC_ADDR_LEN     (6)

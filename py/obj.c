@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <assert.h>
+#include "types.h"
+#include "stdio.hpp"
+// #include <stdarg.h>
+// #include <assert.h>
 
 #include "py/obj.h"
 #include "py/objtype.h"

@@ -32,9 +32,9 @@
 
 #if MICROPY_PY_NETWORK_NINAW10
 
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
+#include "types.h"
+
+#include "stdio.hpp"
 
 #include "nina_bsp.h"
 #include "nina_wifi_drv.h"

@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <assert.h>
+#include "stdio.hpp"
+// #include <assert.h>
 
 #include "py/runtime.h"
 #include "py/mperrno.h"
@@ -82,9 +82,9 @@ const uint8_t *mp_reader_try_read_rom(mp_reader_t *reader, size_t len) {
 
 #if MICROPY_READER_POSIX
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
+// #include <sys/stat.h>
+// #include <fcntl.h>
+// #include <unistd.h>
 
 typedef struct _mp_reader_posix_t {
     bool close_fd;

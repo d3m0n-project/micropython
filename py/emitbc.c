@@ -24,12 +24,12 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <assert.h>
+// #include <stdbool.h>
+#include "types.h"
+#include "stdio.hpp"
+
+// #include <unistd.h>
+// #include <assert.h>
 
 #include "py/mpstate.h"
 #include "py/smallint.h"

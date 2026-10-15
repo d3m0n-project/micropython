@@ -1,6 +1,6 @@
 #include "mbedtls/error.h"
-#include <string.h>
-#include <stdio.h>
+
+#include "stdio.hpp"
 
 // test_code checks that the provided code results in the provided error string for any size
 // buffer. It calls mbedtls_strerror() to fill a buffer that is from 1 to 100 bytes in length

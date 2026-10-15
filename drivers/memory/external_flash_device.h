@@ -26,8 +26,8 @@
 #ifndef MICROPY_INCLUDED_ATMEL_SAMD_EXTERNAL_FLASH_DEVICES_H
 #define MICROPY_INCLUDED_ATMEL_SAMD_EXTERNAL_FLASH_DEVICES_H
 
-#include <stdbool.h>
-#include <stdint.h>
+// #include <stdbool.h>
+#include "types.h"
 
 typedef struct {
     uint32_t total_size;

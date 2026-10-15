@@ -45,8 +45,8 @@
 #include "lwip/dhcp6.h"
 #include "lwip/prot/dhcp.h"
 #include "lwip/prot/dhcp6.h"
-#include <string.h>
-#include <stdlib.h>
+
+#include "stdlib.h"
 
 int mp_mod_network_prefer_dns_use_ip_version = 4;
 

@@ -25,10 +25,10 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
-#include <assert.h>
+#include "stdio.hpp"
+// #include <stdarg.h>
+
+// #include <assert.h>
 
 #include "py/mpconfig.h"
 #include "py/runtime.h"

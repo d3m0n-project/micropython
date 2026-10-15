@@ -26,13 +26,9 @@
 #ifndef MICROPY_INCLUDED_PY_MPCONFIG_H
 #define MICROPY_INCLUDED_PY_MPCONFIG_H
 
-#include <stdint.h>
-
-#if defined(__cplusplus) // Required on at least one compiler to get ULLONG_MAX
-#include <climits>
-#else
-#include <limits.h>
-#endif
+#include "types.h"
+#include "stdlib.h"
+#include "stdio.hpp"
 
 
 // Current version of MicroPython. This is used by sys.implementation.version
@@ -97,7 +93,7 @@
 #ifdef MP_CONFIGFILE
 #include MP_CONFIGFILE
 #else
-#include <mpconfigport.h>
+// #include <mpconfigport.h>
 #endif
 
 // Ports/boards should set this, but default to level=core.

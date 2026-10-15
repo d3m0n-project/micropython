@@ -36,7 +36,7 @@
 #error "with MICROPY_VFS_FAT enabled, must also enable MICROPY_VFS"
 #endif
 
-#include <string.h>
+
 #include "py/runtime.h"
 #include "py/mperrno.h"
 #include "lib/oofatfs/ff.h"

@@ -10,7 +10,7 @@ SRC = main.c prod.c test.py
 # Architecture to build for (x86, x64, armv7m, xtensa, xtensawin, rv32imc, rv64imc)
 ARCH = x64
 
-ifeq ($(findstring clang,$(shell $(CC) --version)),clang)
+ifeq ($(findstring clang,$(shell d3c --version)),clang)
 ifeq ($(ARCH),$(filter $(ARCH),armv6m armv7m rv32imc))
 # Link with both libc.a and libclang_rt.builtins.a
 LINK_CLANG_LIBC = 1

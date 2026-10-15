@@ -116,8 +116,8 @@
 #define MBEDTLS_NO_PLATFORM_ENTROPY
 
 // Bare-metal memory allocation hooks.
-#include <stdlib.h>
-#include <stdio.h>
+#include "stdlib.h"
+#include "stdio.hpp"
 void *m_tracked_calloc(size_t nmemb, size_t size);
 void m_tracked_free(void *ptr);
 #define MBEDTLS_PLATFORM_STD_CALLOC m_tracked_calloc

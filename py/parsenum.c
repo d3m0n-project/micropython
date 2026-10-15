@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include <stdlib.h>
+// #include <stdbool.h>
+#include "stdlib.h"
 
 #include "py/runtime.h"
 #include "py/misc.h"
@@ -34,7 +34,7 @@
 #include "py/smallint.h"
 
 #if MICROPY_PY_BUILTINS_FLOAT
-#include <math.h>
+// #include <math.h>
 #endif
 
 static MP_NORETURN void raise_exc(mp_obj_t exc, mp_lexer_t *lex) {

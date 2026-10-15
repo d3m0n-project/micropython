@@ -25,7 +25,7 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
+
 #include "py/mpconfig.h"
 
 #include "py/runtime.h"

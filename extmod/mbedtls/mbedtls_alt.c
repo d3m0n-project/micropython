@@ -14,7 +14,7 @@
 #error "MICROPY_PY_SSL_ECDSA_SIGN_ALT cannot be used with MBEDTLS_ECP_RESTARTABLE or MBEDTLS_ECDSA_DETERMINISTIC"
 #endif
 
-#include <string.h>
+
 #define MBEDTLS_ALLOW_PRIVATE_ACCESS
 #include "mbedtls/platform.h"
 #include "mbedtls/ssl.h"

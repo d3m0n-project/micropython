@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-#include <assert.h>
+// #include <assert.h>
 
 #include "py/scope.h"
 

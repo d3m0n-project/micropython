@@ -51,7 +51,7 @@ SRC_C = \
 	shared/runtime/gchelper_generic.c \
 
 # Add fmode when compiling with mingw gcc
-COMPILER_TARGET := $(shell $(CC) -dumpmachine)
+COMPILER_TARGET := $(shell d3c -dumpmachine)
 ifneq (,$(findstring mingw,$(COMPILER_TARGET)))
 	SRC_C += ports/windows/fmode.c
 endif

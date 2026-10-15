@@ -26,8 +26,8 @@
 #ifndef MICROPY_INCLUDED_PY_PARSE_H
 #define MICROPY_INCLUDED_PY_PARSE_H
 
-#include <stddef.h>
-#include <stdint.h>
+// #include <stddef.h>
+#include "types.h"
 
 #include "py/obj.h"
 

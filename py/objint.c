@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <assert.h>
-#include <string.h>
+#include "stdlib.h"
+// #include <assert.h>
+
 
 #include "py/parsenum.h"
 #include "py/smallint.h"
@@ -36,7 +36,7 @@
 #include "py/binary.h"
 
 #if MICROPY_PY_BUILTINS_FLOAT
-#include <math.h>
+// #include <math.h>
 #endif
 
 // This dispatcher function is expected to be independent of the implementation of long int

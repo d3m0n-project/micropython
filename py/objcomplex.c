@@ -24,16 +24,16 @@
  * THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <assert.h>
+#include "stdlib.h"
+#include "stdio.hpp"
+// #include <assert.h>
 
 #include "py/parsenum.h"
 #include "py/runtime.h"
 
 #if MICROPY_PY_BUILTINS_COMPLEX
 
-#include <math.h>
+// #include <math.h>
 #include "py/formatfloat.h"
 
 typedef struct _mp_obj_complex_t {

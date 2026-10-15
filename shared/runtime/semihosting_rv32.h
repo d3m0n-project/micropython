@@ -50,9 +50,9 @@
  * and AArch64" document, revision 2023Q3.
  */
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdnoreturn.h>
+// #include <stddef.h>
+#include "types.h"
+// #include <stdnoreturn.h>
 
 // A container for heap and stack pointers as returned by SYS_HEAPINFO.
 typedef struct {

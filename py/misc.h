@@ -26,20 +26,20 @@
 #ifndef MICROPY_INCLUDED_PY_MISC_H
 #define MICROPY_INCLUDED_PY_MISC_H
 
-#include <string.h>
+
 #include "py/mpconfig.h"
 
 // a mini library of useful types and functions
 
 /** types *******************************************************/
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stddef.h>
+// #include <stdbool.h>
+#include "types.h"
+// #include <stddef.h>
 #if __cplusplus // Required on at least one compiler to get ULLONG_MAX
-#include <climits>
+// #include <climits>
 #else
-#include <limits.h>
+
 #endif
 
 typedef unsigned char byte;
@@ -103,14 +103,14 @@ typedef unsigned int uint;
 #define m_new0(type, num) ((type *)(m_malloc0(sizeof(type) * (num))))
 #define m_new_obj(type) (m_new(type, 1))
 #define m_new_obj_maybe(type) (m_new_maybe(type, 1))
-#define m_new_obj_var(obj_type, var_field, var_type, var_num) ((obj_type *)m_malloc(offsetof(obj_type, var_field) + sizeof(var_type) * (var_num)))
-#define m_new_obj_var0(obj_type, var_field, var_type, var_num) ((obj_type *)m_malloc0(offsetof(obj_type, var_field) + sizeof(var_type) * (var_num)))
-#define m_new_obj_var_maybe(obj_type, var_field, var_type, var_num) ((obj_type *)m_malloc_maybe(offsetof(obj_type, var_field) + sizeof(var_type) * (var_num)))
+#define m_new_obj_var(obj_type, var_field, var_type, var_num) ((obj_type *)m_malloc(OFFSETOF(obj_type, var_field) + sizeof(var_type) * (var_num)))
+#define m_new_obj_var0(obj_type, var_field, var_type, var_num) ((obj_type *)m_malloc0(OFFSETOF(obj_type, var_field) + sizeof(var_type) * (var_num)))
+#define m_new_obj_var_maybe(obj_type, var_field, var_type, var_num) ((obj_type *)m_malloc_maybe(OFFSETOF(obj_type, var_field) + sizeof(var_type) * (var_num)))
 #if MICROPY_MALLOC_USES_ALLOCATED_SIZE
 #define m_renew(type, ptr, old_num, new_num) ((type *)(m_realloc((ptr), sizeof(type) * (old_num), sizeof(type) * (new_num))))
 #define m_renew_maybe(type, ptr, old_num, new_num, allow_move) ((type *)(m_realloc_maybe((ptr), sizeof(type) * (old_num), sizeof(type) * (new_num), (allow_move))))
 #define m_del(type, ptr, num) m_free(ptr, sizeof(type) * (num))
-#define m_del_var(obj_type, var_field, var_type, var_num, ptr) (m_free(ptr, offsetof(obj_type, var_field) + sizeof(var_type) * (var_num)))
+#define m_del_var(obj_type, var_field, var_type, var_num, ptr) (m_free(ptr, OFFSETOF(obj_type, var_field) + sizeof(var_type) * (var_num)))
 #else
 #define m_renew(type, ptr, old_num, new_num) ((type *)(m_realloc((ptr), sizeof(type) * (new_num))))
 #define m_renew_maybe(type, ptr, old_num, new_num, allow_move) ((type *)(m_realloc_maybe((ptr), sizeof(type) * (new_num), (allow_move))))
@@ -346,7 +346,7 @@ typedef struct {
     #endif
 } *mp_rom_error_text_t;
 
-#include <string.h>
+
 
 inline MP_ALWAYSINLINE const char *MP_COMPRESSED_ROM_TEXT(const char *msg) {
     // "genhdr/compressed.data.h" contains an invocation of the MP_MATCH_COMPRESSED macro for each compressed string.
@@ -381,7 +381,7 @@ typedef const char *mp_rom_error_text_t;
 
 // Portable implementations of CLZ and CTZ intrinsics
 #ifdef _MSC_VER
-#include <intrin.h>
+// #include <intrin.h>
 
 static inline uint32_t mp_clz(uint32_t x) {
     unsigned long lz = 0;

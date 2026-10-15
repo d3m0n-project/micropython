@@ -1,6 +1,6 @@
 // an implementation of sqrtf for Thumb using hardware VFP instructions
 
-#include <math.h>
+// #include <math.h>
 
 float sqrtf(float x) {
     __asm__ volatile (

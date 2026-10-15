@@ -24,8 +24,8 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <assert.h>
+#include "stdio.hpp"
+// #include <assert.h>
 
 #include "py/smallint.h"
 #include "py/objint.h"
@@ -36,7 +36,7 @@
 #include "py/stream.h"
 
 #if MICROPY_PY_BUILTINS_FLOAT
-#include <math.h>
+// #include <math.h>
 #endif
 
 #if MICROPY_PY_IO

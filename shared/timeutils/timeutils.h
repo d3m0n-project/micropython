@@ -29,7 +29,7 @@
 
 #include "py/obj.h"
 #if MICROPY_PY_BUILTINS_FLOAT && MICROPY_FLOAT_IMPL == MICROPY_FLOAT_IMPL_DOUBLE
-#include <math.h> // required for trunc()
+// #include <math.h> // required for trunc()
 #endif
 
 // `timeutils_timestamp_t` is the type used internally by timeutils to

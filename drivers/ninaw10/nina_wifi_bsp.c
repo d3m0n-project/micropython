@@ -31,8 +31,8 @@
 
 #if MICROPY_PY_NETWORK_NINAW10
 
-#include <stdint.h>
-#include <string.h>
+#include "types.h"
+
 
 #include "py/runtime.h"
 #include "extmod/modmachine.h"

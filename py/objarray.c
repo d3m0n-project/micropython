@@ -25,9 +25,9 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <assert.h>
-#include <stdint.h>
+
+// #include <assert.h>
+#include "types.h"
 
 #include "py/runtime.h"
 #include "py/binary.h"

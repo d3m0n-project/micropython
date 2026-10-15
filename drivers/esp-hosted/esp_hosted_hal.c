@@ -30,8 +30,8 @@
 
 #if MICROPY_PY_NETWORK_ESP_HOSTED
 
-#include <stdint.h>
-#include <string.h>
+#include "types.h"
+
 
 #include "py/runtime.h"
 #include "extmod/modmachine.h"

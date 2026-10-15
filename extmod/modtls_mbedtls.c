@@ -29,9 +29,9 @@
 #include "py/mpconfig.h"
 #if MICROPY_PY_SSL && MICROPY_SSL_MBEDTLS
 
-#include <stdio.h>
-#include <string.h>
-#include <errno.h> // needed because mp_is_nonblocking_error uses system error codes
+#include "stdio.hpp"
+
+// #include <errno.h> // needed because mp_is_nonblocking_error uses system error codes
 
 #include "py/runtime.h"
 #include "py/stream.h"

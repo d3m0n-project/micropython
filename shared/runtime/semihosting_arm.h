@@ -42,8 +42,8 @@ If mp_semihosting_rx_char() doesn't work then try mp_semihosting_rx_chars(str, 1
 
 */
 
-#include <stddef.h>
-#include <stdint.h>
+// #include <stddef.h>
+#include "types.h"
 
 void mp_semihosting_init();
 void mp_semihosting_exit(int status);

@@ -1,6 +1,6 @@
 extern "C" {
-#include <examplemodule.h>
-#include <py/objstr.h>
+// #include <examplemodule.h>
+// #include <py/objstr.h>
 
 // Here we implement the function using C++ code, but since it's
 // declaration has to be compatible with C everything goes in extern "C" scope.

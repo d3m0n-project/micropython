@@ -35,7 +35,7 @@
  *    any source distribution.
  */
 
-#include <assert.h>
+// #include <assert.h>
 #include "uzlib.h"
 
 #define UZLIB_DUMP_ARRAY(heading, arr, size) \

@@ -28,7 +28,7 @@
 
 #if MICROPY_PY_OPENAMP
 
-#include <stdarg.h>
+// #include <stdarg.h>
 #include "py/obj.h"
 #include "py/nlr.h"
 #include "py/runtime.h"
@@ -288,9 +288,9 @@ static void openamp_rsc_table_init(openamp_rsc_table_t *rsc_table) {
 
     rsc_table->version = 1;
     rsc_table->num = MP_ARRAY_SIZE(rsc_table->offset);
-    rsc_table->offset[0] = offsetof(openamp_rsc_table_t, vdev);
+    rsc_table->offset[0] = OFFSETOF(openamp_rsc_table_t, vdev);
     #if MICROPY_PY_OPENAMP_TRACE_BUF_ENABLE
-    rsc_table->offset[1] = offsetof(openamp_rsc_table_t, trace);
+    rsc_table->offset[1] = OFFSETOF(openamp_rsc_table_t, trace);
     #endif
     rsc_table->vdev = (struct fw_rsc_vdev) {
         RSC_VDEV, VIRTIO_ID_RPMSG, 0, VIRTIO_DEV_FEATURES, 0, 0, 0, VRING_COUNT, {0, 0}

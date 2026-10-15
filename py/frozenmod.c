@@ -26,8 +26,8 @@
  * THE SOFTWARE.
  */
 
-#include <string.h>
-#include <stdint.h>
+
+#include "types.h"
 
 #include "py/lexer.h"
 #include "py/frozenmod.h"

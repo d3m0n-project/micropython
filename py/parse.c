@@ -24,12 +24,12 @@
  * THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <unistd.h> // for ssize_t
-#include <assert.h>
-#include <string.h>
+// #include <stdbool.h>
+#include "types.h"
+#include "stdio.hpp"
+// #include <unistd.h> // for ssize_t
+// #include <assert.h>
+
 
 #include "py/lexer.h"
 #include "py/parse.h"

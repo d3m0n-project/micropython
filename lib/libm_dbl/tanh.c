@@ -1,4 +1,4 @@
-#include <math.h>
+// #include <math.h>
 
 double tanh(double x) {
     int sign = 0;

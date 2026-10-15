@@ -31,8 +31,8 @@
 
 #if MICROPY_PY_BLUETOOTH && MICROPY_PY_NETWORK_NINAW10
 
-#include <stdio.h>
-#include <string.h>
+#include "stdio.hpp"
+
 
 #include "py/runtime.h"
 #include "extmod/mpbthci.h"

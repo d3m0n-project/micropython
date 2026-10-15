@@ -26,7 +26,7 @@
 #ifndef MICROPY_INCLUDED_PY_LEXER_H
 #define MICROPY_INCLUDED_PY_LEXER_H
 
-#include <stdint.h>
+#include "types.h"
 
 #include "py/mpconfig.h"
 #include "py/qstr.h"
