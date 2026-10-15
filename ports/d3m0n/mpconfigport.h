@@ -33,8 +33,8 @@ typedef long mp_off_t;
 // We need to provide a declaration/definition of alloca()
 // #include <alloca.h>
 
-#define MICROPY_HW_BOARD_NAME "minimal"
-#define MICROPY_HW_MCU_NAME "unknown-cpu"
+#define MICROPY_HW_BOARD_NAME "d3m0n os"
+#define MICROPY_HW_MCU_NAME "H616"
 #define MICROPY_MPHALPORT_H "mphalport.h"
 
 #if defined(__linux__) || defined(__APPLE__)
