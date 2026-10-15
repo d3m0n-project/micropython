@@ -38,5 +38,12 @@ $(BUILD)/$(OUT): $(OBJ)
 	$(Q)d3c $(LDFLAGS) -o $@ $^ $(LIBS)
 	$(Q)$(SIZE) $@
 
+export: all
+	mv $(BUILD)/$(OUT) ../../../bin/$(OUT)
+
+re_export: clean all
+
 # Include remaining core make rules.
 include $(TOP)/py/mkrules.mk
+
+.PHONY: all clean re_export export
