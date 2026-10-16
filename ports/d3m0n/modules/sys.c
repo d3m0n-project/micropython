@@ -267,7 +267,6 @@ static mp_obj_t	sys_surface_create(mp_obj_t width_obj, mp_obj_t height_obj)
         mp_obj_new_int(result),
     };
 
-	printf("addr: %p\n", surface);
     return mp_obj_new_tuple(3, items);
 }
 
@@ -291,7 +290,6 @@ static mp_obj_t sys_c_buffer_uint32_set(mp_obj_t address_obj, mp_obj_t offset_ob
     uintptr_t byte_offset = offset_count * sizeof(uint32_t);
     if (byte_offset > UINTPTR_MAX - address)
         mp_raise_ValueError(MP_ERROR_TEXT("address overflow"));
-
 	
 
     uint32_t *ptr = (uint32_t *)(address + byte_offset);
