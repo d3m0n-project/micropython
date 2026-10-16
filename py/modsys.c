@@ -388,7 +388,8 @@ const mp_obj_module_t mp_module_sys = {
 // Unlike the other CPython-compatible modules, sys is not extensible from the
 // filesystem. We rely on it to work so that things like sys.path are always
 // available.
-MP_REGISTER_MODULE(MP_QSTR_sys, mp_module_sys);
+// sys disables to be replaced by ours
+//MP_REGISTER_MODULE(MP_QSTR_sys, mp_module_sys);
 
 #if MICROPY_PY_SYS_ARGV
 // Code should access this (as an mp_obj_t) for use with e.g.

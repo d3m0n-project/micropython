@@ -22,9 +22,13 @@ SRC_C = \
 	shared/runtime/gchelper_generic.c \
 	shared/runtime/pyexec.c \
 	shared/runtime/stdout_helpers.c \
+	py/reader.c \
+	modules/sys.c
 
 # Define source files containung qstrs.
-SRC_QSTR += shared/readline/readline.c shared/runtime/pyexec.c
+SRC_QSTR += shared/readline/readline.c \
+			shared/runtime/pyexec.c \
+			modules/sys.c
 
 # Define the required object files.
 OBJ = $(PY_CORE_O) $(addprefix $(BUILD)/, $(SRC_C:.c=.o))

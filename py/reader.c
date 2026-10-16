@@ -80,11 +80,8 @@ const uint8_t *mp_reader_try_read_rom(mp_reader_t *reader, size_t len) {
     return data;
 }
 
-#if MICROPY_READER_POSIX
 
-// #include <sys/stat.h>
-// #include <fcntl.h>
-// #include <unistd.h>
+#include "sys.h"
 
 typedef struct _mp_reader_posix_t {
     bool close_fd;
@@ -145,17 +142,13 @@ void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, bool close_fd) {
     reader->close = mp_reader_posix_close;
 }
 
-#if !MICROPY_VFS_POSIX
-// If MICROPY_VFS_POSIX is defined then this function is provided by the VFS layer
+
 void mp_reader_new_file(mp_reader_t *reader, qstr filename) {
     MP_THREAD_GIL_EXIT();
-    int fd = open(qstr_str(filename), O_RDONLY, 0644);
+    int fd = open(qstr_str(filename), O_READ);
     MP_THREAD_GIL_ENTER();
     if (fd < 0) {
         mp_raise_OSError_with_filename(errno, qstr_str(filename));
     }
     mp_reader_new_file_from_fd(reader, fd, true);
 }
-#endif
-
-#endif
