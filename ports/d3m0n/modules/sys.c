@@ -262,10 +262,12 @@ static mp_obj_t	sys_surface_create(mp_obj_t width_obj, mp_obj_t height_obj)
     int result = surface_create(width, height, &surface, &pitch);
 
     mp_obj_t items[3] = {
-        mp_obj_new_int_from_uint((uintptr_t)surface),  // ← was mp_obj_new_int + cast
+        mp_obj_new_int_from_uint((uintptr_t)surface),
         mp_obj_new_int(pitch),
         mp_obj_new_int(result),
     };
+
+	printf("addr: %p\n", surface);
     return mp_obj_new_tuple(3, items);
 }
 
@@ -274,24 +276,26 @@ static MP_DEFINE_CONST_FUN_OBJ_2(
 );
 
 /* c_buffer_uint32_set(address, offset, value) */
-static mp_obj_t	sys_c_buffer_uint32_set(mp_obj_t address_obj, mp_obj_t offset_obj, mp_obj_t value_obj)
+static mp_obj_t sys_c_buffer_uint32_set(mp_obj_t address_obj, mp_obj_t offset_obj, mp_obj_t value_obj)
 {
     uintptr_t address = (uintptr_t)mp_obj_get_int_truncated(address_obj);
-    mp_int_t signed_offset = mp_obj_get_int(offset_obj);  // error on negative
+    mp_int_t signed_offset = mp_obj_get_int(offset_obj);
     if (signed_offset < 0)
         mp_raise_ValueError(MP_ERROR_TEXT("offset must be non-negative"));
 	
     uintptr_t offset_count = (uintptr_t)signed_offset;
-    uint32_t value = (uint32_t)mp_obj_get_int_truncated(value_obj);
+    mp_uint_t value = mp_obj_int_get_truncated(value_obj);
     if (offset_count > UINTPTR_MAX / sizeof(uint32_t))
         mp_raise_ValueError(MP_ERROR_TEXT("offset overflow"));
-	
+
     uintptr_t byte_offset = offset_count * sizeof(uint32_t);
     if (byte_offset > UINTPTR_MAX - address)
         mp_raise_ValueError(MP_ERROR_TEXT("address overflow"));
 
+	
+
     uint32_t *ptr = (uint32_t *)(address + byte_offset);
-    *ptr = value;   // direct assignment is cleaner than memcpy for aligned uint32
+    *ptr = (uint32_t)value;
     return mp_const_none;
 }
 
