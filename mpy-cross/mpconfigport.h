@@ -123,6 +123,63 @@ typedef long mp_off_t;
 #endif
 
 #include "types.h"
+#include "math.h"
+
+#ifndef PATH_MAX
+#define PATH_MAX 256
+#endif
+
+// The d3m0n SDK defines these minimum values as unsigned hexadecimal
+// constants, which breaks signed overflow checks in the MicroPython core.
+#undef LLONG_MIN
+#define LLONG_MIN (-LLONG_MAX - 1LL)
+#undef INTPTR_MIN
+#define INTPTR_MIN (-INTPTR_MAX - 1)
+
+// The d3m0n SDK has file descriptors but doesn't define the POSIX names.
+#ifndef STDIN_FILENO
+#define STDIN_FILENO 0
+#define STDOUT_FILENO 1
+#define STDERR_FILENO 2
+#endif
+
+// The SDK exposes strtoul; mpy-cross only uses strtol for non-negative heap
+// size options.
+#define strtol(nptr, endptr, base) ((long)strtoul((nptr), (endptr), (base)))
+
+#ifndef isnan
+#define isnan(x) __builtin_isnan(x)
+#endif
+#ifndef isinf
+#define isinf(x) __builtin_isinf(x)
+#endif
+#ifndef signbit
+#define signbit(x) __builtin_signbit(x)
+#endif
+#ifndef INFINITY
+#define INFINITY __builtin_inf()
+#endif
+#ifndef NAN
+#define NAN __builtin_nan("")
+#endif
+#ifndef nan
+#define nan(tagp) __builtin_nan(tagp)
+#endif
+#ifndef copysign
+#define copysign(x, y) __builtin_copysign(x, y)
+#endif
+#ifndef nearbyint
+#define nearbyint(x) __builtin_nearbyint(x)
+#endif
+#ifndef pow
+#define pow(x, y) __builtin_pow(x, y)
+#endif
+#ifndef fmod
+#define fmod(x, y) __builtin_fmod(x, y)
+#endif
+#ifndef floor
+#define floor(x) __builtin_floor(x)
+#endif
 
 // MSVC specifics - see windows/mpconfigport.h for explanation
 #ifdef _MSC_VER

@@ -98,7 +98,7 @@ static mp_uint_t mp_reader_posix_readbyte(void *data) {
             return MP_READER_EOF;
         } else {
             MP_THREAD_GIL_EXIT();
-            int n = read(reader->fd, reader->buf, sizeof(reader->buf));
+			int n = read(reader->fd, (char *)reader->buf, sizeof(reader->buf));
             MP_THREAD_GIL_ENTER();
             if (n <= 0) {
                 reader->len = 0;
@@ -126,7 +126,7 @@ void mp_reader_new_file_from_fd(mp_reader_t *reader, int fd, bool close_fd) {
     rp->close_fd = close_fd;
     rp->fd = fd;
     MP_THREAD_GIL_EXIT();
-    int n = read(rp->fd, rp->buf, sizeof(rp->buf));
+	int n = read(rp->fd, (char *)rp->buf, sizeof(rp->buf));
     if (n == -1) {
         if (close_fd) {
             close(fd);

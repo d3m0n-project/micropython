@@ -60,11 +60,11 @@ bool mp_mul_ll_overflow(long long int x, long long int y, long long int *res) {
         if (y > 0) { // x and y are positive
             overflow = (x > (LLONG_MAX / y));
         } else { // x positive, y nonpositive
-            overflow = (y < (LLONG_MIN / x));
+            overflow = (y < ((long long)LLONG_MIN / x));
         } // x positive, y nonpositive
     } else { // x is nonpositive
         if (y > 0) { // x is nonpositive, y is positive
-            overflow = (x < (LLONG_MIN / y));
+            overflow = (x < ((long long)LLONG_MIN / y));
         } else { // x and y are nonpositive
             overflow = (x != 0 && y < (LLONG_MAX / x));
         } // End if x and y are nonpositive
@@ -85,13 +85,13 @@ bool mp_mul_mp_int_t_overflow(mp_int_t x, mp_int_t y, mp_int_t *res) {
                 return true;
             }
         } else { // x positive, y nonpositive
-            if (y < (MP_INT_MIN / x)) {
+            if (y < ((mp_int_t)MP_INT_MIN / x)) {
                 return true;
             }
         } // x positive, y nonpositive
     } else { // x is nonpositive
         if (y > 0) { // x is nonpositive, y is positive
-            if (x < (MP_INT_MIN / y)) {
+            if (x < ((mp_int_t)MP_INT_MIN / y)) {
                 return true;
             }
         } else { // x and y are nonpositive

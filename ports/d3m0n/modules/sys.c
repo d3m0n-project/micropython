@@ -305,9 +305,7 @@ static MP_DEFINE_CONST_FUN_OBJ_3(
 static mp_obj_t sys_surface_update(mp_obj_t surface_obj)
 {
 	uintptr_t address = (uintptr_t)mp_obj_int_get_truncated(surface_obj);
-
-	surface_update((uint8_t *)address);
-	return mp_const_none;
+	return  mp_obj_new_int(surface_update((uint8_t *)address));
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(

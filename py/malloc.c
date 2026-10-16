@@ -27,7 +27,7 @@
 #include "stdio.hpp"
 #include "stdlib.h"
 
-
+#include "memory.h"
 #include "py/mpconfig.h"
 #include "py/misc.h"
 #include "py/mpstate.h"
