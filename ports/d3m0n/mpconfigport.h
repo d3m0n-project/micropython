@@ -5,6 +5,8 @@
 
 #define MICROPY_ENABLE_COMPILER				(1)
 
+
+
 #define MICROPY_ENABLE_GC					(1)
 #define MICROPY_LONGINT_IMPL				(MICROPY_LONGINT_IMPL_LONGLONG)
 #define MICROPY_HELPER_REPL					(1)
@@ -27,6 +29,7 @@
 
 //#define MICROPY_OBJ_REPR					MICROPY_OBJ_REPR_C
 #define MICROPY_FLOAT_IMPL					MICROPY_FLOAT_IMPL_FLOAT
+#define MICROPY_MULTIPLE_INHERITANCE		(1)
 #ifndef isnan
 #define isnan(x) __builtin_isnan(x)
 #endif
