@@ -253,21 +253,21 @@ static MP_DEFINE_CONST_FUN_OBJ_1(sys_remove_obj, sys_remove);
 /* surface_create(width, height) -> (address, pitch, return_code) */
 static mp_obj_t	sys_surface_create(mp_obj_t width_obj, mp_obj_t height_obj)
 {
-    uint32_t width  = (uint32_t)mp_obj_get_int_truncated(width_obj);
-    uint32_t height = (uint32_t)mp_obj_get_int_truncated(height_obj);
+	uint32_t width  = (uint32_t)mp_obj_get_int_truncated(width_obj);
+	uint32_t height = (uint32_t)mp_obj_get_int_truncated(height_obj);
 
-    uint8_t *surface = NULL;
-    int pitch = 0;
+	uint8_t *surface = NULL;
+	int pitch = 0;
 
-    int result = surface_create(width, height, &surface, &pitch);
+	int result = surface_create(width, height, &surface, &pitch);
 
-    mp_obj_t items[3] = {
-        mp_obj_new_int_from_uint((uintptr_t)surface),
-        mp_obj_new_int(pitch),
-        mp_obj_new_int(result),
-    };
+	mp_obj_t items[3] = {
+		mp_obj_new_int_from_uint((uintptr_t)surface),
+		mp_obj_new_int(pitch),
+		mp_obj_new_int(result),
+	};
 
-    return mp_obj_new_tuple(3, items);
+	return mp_obj_new_tuple(3, items);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_2(
@@ -277,28 +277,81 @@ static MP_DEFINE_CONST_FUN_OBJ_2(
 /* c_buffer_uint32_set(address, offset, value) */
 static mp_obj_t sys_c_buffer_uint32_set(mp_obj_t address_obj, mp_obj_t offset_obj, mp_obj_t value_obj)
 {
-    uintptr_t address = (uintptr_t)mp_obj_get_int_truncated(address_obj);
-    mp_int_t signed_offset = mp_obj_get_int(offset_obj);
-    if (signed_offset < 0)
-        mp_raise_ValueError(MP_ERROR_TEXT("offset must be non-negative"));
+	uintptr_t address = (uintptr_t)mp_obj_get_int_truncated(address_obj);
+	mp_int_t signed_offset = mp_obj_get_int(offset_obj);
+	if (signed_offset < 0)
+		mp_raise_ValueError(MP_ERROR_TEXT("offset must be non-negative"));
 	
-    uintptr_t offset_count = (uintptr_t)signed_offset;
-    mp_uint_t value = mp_obj_int_get_truncated(value_obj);
-    if (offset_count > UINTPTR_MAX / sizeof(uint32_t))
-        mp_raise_ValueError(MP_ERROR_TEXT("offset overflow"));
+	uintptr_t offset_count = (uintptr_t)signed_offset;
+	mp_uint_t value = mp_obj_int_get_truncated(value_obj);
+	if (offset_count > UINTPTR_MAX / sizeof(uint32_t))
+		mp_raise_ValueError(MP_ERROR_TEXT("offset overflow"));
 
-    uintptr_t byte_offset = offset_count * sizeof(uint32_t);
-    if (byte_offset > UINTPTR_MAX - address)
-        mp_raise_ValueError(MP_ERROR_TEXT("address overflow"));
+	uintptr_t byte_offset = offset_count * sizeof(uint32_t);
+	if (byte_offset > UINTPTR_MAX - address)
+		mp_raise_ValueError(MP_ERROR_TEXT("address overflow"));
 	
 
-    uint32_t *ptr = (uint32_t *)(address + byte_offset);
-    *ptr = (uint32_t)value;
-    return mp_const_none;
+	uint32_t *ptr = (uint32_t *)(address + byte_offset);
+	*ptr = (uint32_t)value;
+	return mp_const_none;
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_3(
 	sys_c_buffer_uint32_set_obj, sys_c_buffer_uint32_set
+);
+
+/* c_buffer_mul_uint32_set(address, offset, length, value) */
+static mp_obj_t sys_c_buffer_mul_uint32_set(size_t n_args, const mp_obj_t *args)
+{
+	(void)n_args;
+
+	uintptr_t address = (uintptr_t)mp_obj_get_int_truncated(args[0]);
+	mp_int_t signed_offset = mp_obj_get_int(args[1]);
+
+	if (signed_offset < 0) {
+		mp_raise_ValueError(MP_ERROR_TEXT("offset must be non-negative"));
+	}
+
+	uintptr_t offset_count = (uintptr_t)signed_offset;
+
+	if (offset_count > UINTPTR_MAX / sizeof(uint32_t)) {
+		mp_raise_ValueError(MP_ERROR_TEXT("offset overflow"));
+	}
+
+	mp_uint_t length = mp_obj_int_get_truncated(args[2]);
+	mp_uint_t value = mp_obj_int_get_truncated(args[3]);
+
+	if (length > UINTPTR_MAX / sizeof(uint32_t)) {
+		mp_raise_ValueError(MP_ERROR_TEXT("length overflow"));
+	}
+
+	uintptr_t byte_offset = offset_count * sizeof(uint32_t);
+
+	if (byte_offset > UINTPTR_MAX - address) {
+		mp_raise_ValueError(MP_ERROR_TEXT("address overflow"));
+	}
+
+	uintptr_t start = address + byte_offset;
+	uintptr_t bytes = length * sizeof(uint32_t);
+
+	if (bytes > UINTPTR_MAX - start) {
+		mp_raise_ValueError(MP_ERROR_TEXT("address range overflow"));
+	}
+
+	uint32_t *ptr = (uint32_t *)start;
+
+	for (mp_uint_t i = 0; i < length; i++)
+		ptr[i] = (uint32_t)value;
+
+	return mp_const_none;
+}
+
+static MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
+	sys_c_buffer_mul_uint32_set_obj,
+	4,
+	4,
+	sys_c_buffer_mul_uint32_set
 );
 
 /* surface_update(address) */
@@ -315,8 +368,7 @@ static MP_DEFINE_CONST_FUN_OBJ_1(
 /* sbrk(increment) -> address */
 static mp_obj_t sys_sbrk(mp_obj_t increment_obj)
 {
-	size_t increment =
-		(size_t)mp_obj_get_int_truncated(increment_obj);
+	size_t increment = (size_t)mp_obj_get_int_truncated(increment_obj);
 
 	void *address = sbrk(increment);
 
@@ -328,9 +380,7 @@ static MP_DEFINE_CONST_FUN_OBJ_1(sys_sbrk_obj, sys_sbrk);
 /* time() */
 static mp_obj_t sys_time(void)
 {
-	return mp_obj_new_int_from_ull(
-		(uint64_t)(uintptr_t)time(NULL)
-	);
+	return mp_obj_new_int_from_ull((uint64_t)(uintptr_t)time(NULL));
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_0(sys_time_obj, sys_time);
@@ -358,8 +408,7 @@ static mp_obj_t sys_exec(mp_obj_t path_obj, mp_obj_t argv_obj)
 {
 	const char *path = sys_get_path(path_obj);
 
-	if (!mp_obj_is_type(argv_obj, &mp_type_list) &&
-		!mp_obj_is_type(argv_obj, &mp_type_tuple)) {
+	if (!mp_obj_is_type(argv_obj, &mp_type_list) &&!mp_obj_is_type(argv_obj, &mp_type_tuple)) {
 		mp_raise_TypeError(MP_ERROR_TEXT(
 			"argv must be a list or tuple"
 		));
@@ -386,8 +435,7 @@ static MP_DEFINE_CONST_FUN_OBJ_2(sys_exec_obj, sys_exec);
 /* kill(pid, code) */
 static mp_obj_t sys_kill(mp_obj_t pid_obj, mp_obj_t code_obj)
 {
-	uint32_t pid =
-		(uint32_t)mp_obj_get_int_truncated(pid_obj);
+	uint32_t pid = (uint32_t)mp_obj_get_int_truncated(pid_obj);
 	int code = sys_get_int(code_obj);
 
 	int result = kill(pid, code);
@@ -408,6 +456,25 @@ static mp_obj_t sys_pstate(mp_obj_t pid_obj)
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(sys_pstate_obj, sys_pstate);
+
+/* evtpop() */
+static mp_obj_t sys_evtpop()
+{
+	event_t	e = {0};
+	if (!evtpop(&e)) // no more event to pop
+		return mp_const_none;
+
+	mp_obj_t items[4] = {
+		mp_obj_new_int_from_uint((uint32_t)e.type),
+		mp_obj_new_int(e.timestamp),
+		mp_obj_new_int(e.x),
+		mp_obj_new_int(e.y)
+	};
+
+	return mp_obj_new_tuple(4, items);
+}
+
+static MP_DEFINE_CONST_FUN_OBJ_0(sys_evtpop_obj, sys_evtpop);
 
 /* Module globals */
 static const mp_rom_map_elem_t sys_module_globals_table[] = {
@@ -430,6 +497,8 @@ static const mp_rom_map_elem_t sys_module_globals_table[] = {
 	{ MP_ROM_QSTR(MP_QSTR_surface_create), MP_ROM_PTR(&sys_surface_create_obj) },
 	{ MP_ROM_QSTR(MP_QSTR_surface_update), MP_ROM_PTR(&sys_surface_update_obj) },
 	{ MP_ROM_QSTR(MP_QSTR_c_buffer_uint32_set), MP_ROM_PTR(&sys_c_buffer_uint32_set_obj) },
+	{ MP_ROM_QSTR(MP_QSTR_c_buffer_mul_uint32_set), MP_ROM_PTR(&sys_c_buffer_mul_uint32_set_obj) },
+	
 
 	{ MP_ROM_QSTR(MP_QSTR_sbrk), MP_ROM_PTR(&sys_sbrk_obj) },
 	{ MP_ROM_QSTR(MP_QSTR_time), MP_ROM_PTR(&sys_time_obj) },
@@ -439,6 +508,8 @@ static const mp_rom_map_elem_t sys_module_globals_table[] = {
 	{ MP_ROM_QSTR(MP_QSTR_exec), MP_ROM_PTR(&sys_exec_obj) },
 	{ MP_ROM_QSTR(MP_QSTR_kill), MP_ROM_PTR(&sys_kill_obj) },
 	{ MP_ROM_QSTR(MP_QSTR_pstate), MP_ROM_PTR(&sys_pstate_obj) },
+
+	{ MP_ROM_QSTR(MP_QSTR_evtpop), MP_ROM_PTR(&sys_evtpop_obj) },
 };
 
 static MP_DEFINE_CONST_DICT(
